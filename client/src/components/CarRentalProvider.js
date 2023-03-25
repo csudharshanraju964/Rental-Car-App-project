@@ -3,6 +3,7 @@ import { createContext, useState} from "react"
 
 const CarContext=createContext()
 function CarRentalProvider({children}){
+    const [auth, setAuth] = useState("");
     const [RentalDate,setRentalDate]=useState({
         start:"",
         end:""
@@ -19,7 +20,7 @@ function CarRentalProvider({children}){
     })
     
     
-    return <CarContext.Provider value={{RentalDate,setRentalDate,carBooking,setCarBooking}}>
+    return <CarContext.Provider value={{auth,setAuth,RentalDate,setRentalDate,carBooking,setCarBooking}}>
         {children}
     </CarContext.Provider>
 }

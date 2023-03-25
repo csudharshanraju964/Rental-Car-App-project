@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CarContext } from "../component/CarRentalProvider";
-import CarType from "../component/CarType";
-import Milleage from "../component/Mileage";
-import Seating from "../component/Seating";
+import { CarContext } from "../components/CarRentalProvider";
+import CarType from "../components/CarType";
+import Milleage from "../components/Mileage";
+import Seating from "../components/Seating";
 import "../styles/Carbooking.css"
 import img from "../image/self-drive-norwa-car-people.png"
 const data=[{

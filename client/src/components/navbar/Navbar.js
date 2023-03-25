@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Navbar.css'
 import LogoutBtn from '../LogoutWrapper/LogoutBtn'
+import { CarContext } from '../CarRentalProvider'
 
-function Navbar({auth, setAuth}) {
+function Navbar() {
+    const {auth, setAuth}=useContext(CarContext)
     //console.log(auth)
     useEffect(()=>{
         const name = (localStorage.getItem('adminName')) || (localStorage.getItem('userName'))

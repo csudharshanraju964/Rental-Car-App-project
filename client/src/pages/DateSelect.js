@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CarContext } from "../component/CarRentalProvider";
+import { CarContext } from "../components/CarRentalProvider";
 import "../styles/DateSelect.css"
 import img from "../image/self-drive-norwa-car-people.png"
 function DateSelect(){
