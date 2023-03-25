@@ -13,6 +13,10 @@ import AdminRegistration from './components/Admin/admin-registration/AdminRegist
 import UserSignin from './components/User/user-signin/UserSignin';
 import UserRegistration from './components/User/user-registartion/UserRegistration';
 
+
+import BookingDetails from "./pages/BookingDetails";
+import CarBooking from "./pages/CarBooking";
+import DateSelect from "./pages/DateSelect";
 function App() {
   const [auth, setAuth] = useState("");
   return (
@@ -26,6 +30,9 @@ function App() {
           <Route path='/admin-registration' element={<AdminRegistration />}/>
           <Route path='/user-signin' element={<UserSignin setAuth={setAuth}/>}/>
           <Route path='/user-registration' element={<UserRegistration />}/>
+          <Route path="/dateselect" element={<DateSelect />} />
+          <Route path="/carbooking" element={<CarBooking />}/>
+          <Route path="/bookingdetails" element={<BookingDetails />} />
         </Routes>
       </BrowserRouter>
     </div>
