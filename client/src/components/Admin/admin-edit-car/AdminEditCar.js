@@ -1,70 +1,34 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import axios from 'axios';
-import "./AdminAddCar.css";
+import { useNavigate } from 'react-router-dom';
 
-
-function AdminAddCar({ setAuth }) {
-
-
+const AdminEditCar = ({ carId, initialCarDetails, onCancel, setAuth  }) => {
     const navigate = useNavigate()
-    const [car, setCar] = useState({
-        name: '',
-        model: '',
-        capacity: '',
-        image: '',
-        type: '',
-        milage: '',
-        rentPerHour: '',
-        availableFrom: '',
-        availableTill: '',
-        carDetails: '',
-        description: '',
-        details: ''
-    });
+    const [carDetails, setCarDetails] = useState(initialCarDetails);
     const [errors, setErrors] = useState({});
 
-    const handleChange = (event) => {
-        setCar({ ...car, [event.target.name]: event.target.value });
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setCarDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Make a POST request to the backend with the car details
-        axios.post('/api/cars', car)
-            .then(response => {
-                // Update the UI with the response from the backend
-                console.log(response.data);
-                setCar({
-                    name: '',
-                    model: '',
-                    capacity: '',
-                    image: '',
-                    type: '',
-                    milage: '',
-                    rentPerHour: '',
-                    availableFrom: '',
-                    availableTill: '',
-                    carDetails: '',
-                    description: '',
-                    details: ''
-                });
-                setErrors({});
+    const handleSaveClick = () => {
+        axios
+            .put(`/api/cars/${carId}`, carDetails)
+            .then((reponse) => {
+                // handle successful save, such as showing a success message to the user
+                console.log('Car added successfully');
             })
-            .catch(error => {
-                // Update the UI with the error messages
+            .catch((error) => {
+                // handle error, such as showing an error message to the user
                 console.error(error.response.data);
                 setErrors(error.response.data);
             });
     };
-
-
     return (
-        <>
-            <div className='header'>
-                <h4>Add Car Details</h4>
-            </div>
-            <form onSubmit={handleSubmit} className="form-container">
+        <div>
+            <h1>Edit Car Details</h1>
+            <form  className="form-container">
                 <div className='firstPart'>
                     <div>
                         <span htmlFor="name" className='leftHeadings'> Car Name</span><br />
@@ -72,9 +36,9 @@ function AdminAddCar({ setAuth }) {
                             type="text"
                             id="name"
                             name="name"
-                            value={car.name}
+                            value={carDetails.name}
                             placeholder="Name"
-                            onChange={handleChange}
+                            onChange={handleInputChange}
                             className="name"
                         />
                         {errors.name && <span className="error">{errors.name}</span>}
@@ -82,7 +46,7 @@ function AdminAddCar({ setAuth }) {
                     <div className='leftHeaders'>
                         <div>
                             <span htmlFor="type" className='leftHeadings'>Type</span><br />
-                            <select id="type" name="type" value={car.type} onChange={handleChange} className="optionsSelector">
+                            <select id="type" name="type" value={carDetails.type} onChange={handleInputChange} className="optionsSelector">
                                 <option value=""></option>
                                 <option value="type1">XUV</option>
                                 <option value="type2">UV</option>
@@ -96,9 +60,9 @@ function AdminAddCar({ setAuth }) {
                                 type="text"
                                 id="capacity"
                                 name="capacity"
-                                value={car.capacity}
+                                value={carDetails.capacity}
                                 placeholder="Capacity"
-                                onChange={handleChange}
+                                onChange={handleInputChange}
                                 className="optionsSelector"
                             />
                             {errors.capacity && <span className="error">{errors.capacity}</span>}
@@ -106,7 +70,7 @@ function AdminAddCar({ setAuth }) {
                         </div>
                         <div>
                             <span htmlFor='model' className='leftHeadings'>Model</span><br />
-                            <select id='model' name='model' value={car.model} onChange={handleChange} className="optionsSelector">
+                            <select id='model' name='model' value={carDetails.model} onChange={handleInputChange} className="optionsSelector">
                                 <option value=""></option>
                                 <option value="Nexson">Nexon</option>
                                 <option value="TataPunch">Tata Punch</option>
@@ -114,11 +78,11 @@ function AdminAddCar({ setAuth }) {
                             </select>
                             {errors.model && <span className="error">{errors.model}</span>}
                         </div>
-
-
+                    </div>
+                    <div className='rightHeaders'>
                         <div>
                             <span htmlFor='milage' className='leftHeadings'>Milage</span><br />
-                            <select id='milage' name='milage' value={car.milage} onChange={handleChange} className="optionsSelector">
+                            <select id='milage' name='milage' value={carDetails.milage} onChange={handleInputChange} className="optionsSelector">
                                 <option value=""></option>
                                 <option value="10">10Km/lit</option>
                                 <option value="15">15Km/lit</option>
@@ -126,17 +90,15 @@ function AdminAddCar({ setAuth }) {
                             </select>
                             {errors.milage && <span className="error">{errors.milage}</span>}
                         </div>
-                    </div>
-                    <div className='rightHeaders'>
                         <div >
                             <span htmlFor='rentPerHour' className='leftHeadings'>Price Per Hour</span><br></br>
                             <input
                                 type="number"
                                 id='rentPerHour'
                                 name="rentPerHour"
-                                value={car.rentPerHour}
+                                value={carDetails.rentPerHour}
                                 placeholder="Rent/hr"
-                                onChange={handleChange}
+                                onChange={handleInputChange}
                                 className="optionsSelector"
                             />
                             {errors.rentPerHour && <span className="error">{errors.rentPerHour}</span>}
@@ -148,24 +110,25 @@ function AdminAddCar({ setAuth }) {
                                 id='availableFrom'
                                 name='avialbleFrom'
                                 placeholder='DD MM YYYY'
-                                onChange={handleChange}
+                                value={carDetails.availableFrom}
+                                onChange={handleInputChange}
                                 className="optionsSelector"
                             />
                             {errors.availableFrom && <span className='error'>{errors.availableFrom}</span>}
                         </div>
-
-                        <div className='description'>
-                            <span htmlFor='availableTill' className='leftHeadings'>Available Till</span><br />
-                            <input
-                                type="date"
-                                id='availableTill'
-                                name='avialbleTill'
-                                placeholder='DD MM YYYY'
-                                onChange={handleChange}
-                                className="optionsSelector"
-                            />
-                            {errors.availableTill && <span className='error'>{errors.availableTill}</span>}
-                        </div>
+                    </div>
+                    <div>
+                        <span htmlFor='availableTill' className='leftHeadings'>Available Till</span><br />
+                        <input
+                            type="date"
+                            id='availableTill'
+                            name='avialbleTill'
+                            placeholder='DD MM YYYY'
+                            value={carDetails.availableTill}
+                            onChange={handleInputChange}
+                            className="optionsSelector"
+                        />
+                        {errors.availableTill && <span className='error'>{errors.availableTill}</span>}
                     </div>
                     <div>
                         <span htmlFor='description' className='leftHeadings'>Description </span><br />
@@ -173,7 +136,8 @@ function AdminAddCar({ setAuth }) {
                             type="text"
                             id='description'
                             name="description"
-                            onChange={handleChange}
+                            value={carDetails.description}
+                            onChange={handleInputChange}
                         />
                         {errors.description && <span className='error'>{errors.description}</span>}
                     </div>
@@ -186,7 +150,8 @@ function AdminAddCar({ setAuth }) {
                             type="image"
                             name="image"
                             id="image"
-                            onChange={handleChange}
+                            value={carDetails.images}
+                            onChange={handleInputChange}
                         />
                         {errors.description && <span className='error'>{errors.description}</span>}
                     </div>
@@ -196,7 +161,8 @@ function AdminAddCar({ setAuth }) {
                             type="text"
                             id="carDetails"
                             name="carDetails"
-                            onChange={handleChange}
+                            value={carDetails.carDetails}
+                            onChange={handleInputChange}
                         />
                         {errors.carDetails && <span className='error'>{errors.carDetails}</span>}
                     </div>
@@ -206,22 +172,18 @@ function AdminAddCar({ setAuth }) {
                             type="text"
                             id="details"
                             name="details"
-                            onChange={handleChange}
+                            value={carDetails.details}
+                            onChange={handleInputChange}
                         />
                         {errors.details && <span className='error'>{errors.details}</span>}
                     </div>
                 </div>
-
             </form>
-            <div>
-                <button className='cancelBtn'>Cancel</button>
-            </div>
-            <div>
-                <button className='addBtn'>Add</button>
-            </div>
+            
+            <button onClick={handleSaveClick}>Save</button>
+            <button onClick={onCancel}>Cancel</button>
+        </div>
+    );
+};
 
-        </>
-    )
-}
-
-export default AdminAddCar
+export default AdminEditCar;

@@ -4,10 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { CarRentalProvider } from './components/CarRentalProvider';
-<<<<<<< HEAD
-=======
 
->>>>>>> 89b7f8290fd13b91b1e6d4c1f65558732d0ebb24
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
