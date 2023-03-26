@@ -18,6 +18,10 @@ import BookingDetails from "./pages/BookingDetails";
 import CarBooking from "./pages/CarBooking";
 import DateSelect from "./pages/DateSelect";
 import MyBooking from './pages/Mybooking';
+import AdminHome from './components/Admin/admin-home/AdminHome';
+import AdminAddCar from './components/Admin/admin-add-car/AdminAddCar';
+import AdminEditCar from './components/Admin/admin-edit-car/AdminEditCar';
+
 function App() {
   
   return (
@@ -35,6 +39,9 @@ function App() {
           <Route path="/carbooking" element={<CarBooking />}/>
           <Route path="/bookingdetails" element={<BookingDetails />} />
           <Route path="/mybookings" element={<MyBooking />} />
+          <Route path="/admin-home" element={<AdminHome />} />
+          <Route path="/admin-home/addCar" element={<AdminAddCar />} />
+          <Route path="/admin-home/editCar" element={<AdminEditCar/>}/>
         </Routes>
       </BrowserRouter>
     </div>
