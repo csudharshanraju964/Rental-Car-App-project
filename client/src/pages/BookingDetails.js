@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CarContext } from "../component/CarRentalProvider";
+import { CarContext } from "../components/CarRentalProvider";
 import img from "../image/self-drive-norwa-car-people.png"
 import "../styles/BookingDetail.css"
 function BookingDetails(){

@@ -1,0 +1,39 @@
+.header {
+    text-align: left;
+    margin-left: 80px;
+    margin-top: 15px;
+    font-size: large;
+}
+
+.form-container {
+    display: flex;
+    font-weight: normal;
+    margin-top: 40px;
+}
+
+label {
+    font-size: medium;
+    letter-spacing: 0.24px;
+    color: #2D2D2E;
+    opacity: 1;
+}
+
+.fistPart {
+    flex: 1;
+    border: 1px solid #FFFFFF;
+    margin-left: 80px;
+    width: 600px
+}
+
+.secondPart {
+    flex: 2;
+    border: 1px solid #FFFFFF;
+    margin-right: 50px;
+    width: 600px;
+    margin-left: 400px;
+}
+
+.name {
+    margin-left: 80px;
+    width: 200px;
+}

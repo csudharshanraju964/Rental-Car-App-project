@@ -17,6 +17,8 @@ import UserRegistration from './components/User/user-registartion/UserRegistrati
 import BookingDetails from "./pages/BookingDetails";
 import CarBooking from "./pages/CarBooking";
 import DateSelect from "./pages/DateSelect";
+import AdminHome from './components/Admin/admin-home/AdminHome';
+import AdminAddCar from './components/Admin/admin-add-car/AdminAddCar';
 function App() {
   const [auth, setAuth] = useState("");
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path="/dateselect" element={<DateSelect />} />
           <Route path="/carbooking" element={<CarBooking />}/>
           <Route path="/bookingdetails" element={<BookingDetails />} />
+          <Route path="/admin-home" element={<AdminHome />} />
+          <Route path="/admin-home/addCar" element={<AdminAddCar />} />
         </Routes>
       </BrowserRouter>
     </div>
