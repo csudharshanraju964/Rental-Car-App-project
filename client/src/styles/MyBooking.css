@@ -1,0 +1,115 @@
+#my-booking-main-div{
+    display: flex;
+    border:1px solid #CCCCCC;
+    width: 90%;
+    margin: 2rem 0rem 0rem 4rem;
+}
+#my-booking-main-div > #img-div{
+    width: 15rem;
+    padding :0.2rem;
+} 
+#my-booking-main-div > #img-div >img{
+    max-width: 100%;
+    object-fit: fill;
+}
+#my-booking-main-div #car-details-div{
+    padding: 0.2rem;
+    border-right: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+}
+#my-booking-main-div #car-details-div h2{
+    text-align: center;
+}
+#my-booking-main-div #car-details-div #car-number{
+    color: #818080;
+    font-weight: 700;
+}
+#my-booking-main-div #car-details-div #car-spec{
+    display: grid;
+    grid-template-columns: 10rem 10rem;
+    margin-left: 0.5rem;
+    color: #818080;
+}
+#my-booking-main-div #car-details-div #car-spec div{
+    margin-top: 0.3rem;
+}
+#my-booking-main-div #car-details-div #car-spec span{
+    color: black;
+    font-weight: bold;
+}
+#my-booking-main-div #car-details-div #car-spec #car-type{
+    margin-left: 2rem;
+}
+#my-booking-main-div #car-details-div #car-spec #car-mileage{
+    margin-left: 0.4rem;
+}
+#my-booking-main-div #car-details-div #car-spec #car-seat{
+    margin-left: 2rem;
+}
+#my-booking-main-div #car-details-div #car-spec #car-rsperkm{
+    margin-left: 0.7rem;
+    color:#32C348 ;
+}
+
+
+#my-booking-main-div #car-rent-date{
+    padding: 0 1rem; 
+    color:  #818080;
+    margin-top: 2.7rem;
+}
+#my-booking-main-div #car-rent-date div{
+    margin-top: 0.1rem;
+}
+#my-booking-main-div #car-rent-date span{
+    font-weight: 700;
+    color: black;
+}
+#my-booking-main-div #car-rent-date :first-child span{
+    margin-left: 1rem;
+}
+#my-booking-main-div #car-rent-date :last-child span{
+    margin-left: 1.25rem;
+}
+
+#my-booking-main-div #car-booking-time{
+    border-left:1px solid #CCCCCC;
+    
+    padding-top: 1.9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#my-booking-main-div #car-booking-time div{
+    margin-top: 0.1rem;
+    color: #818080;
+}
+#my-booking-main-div #car-booking-time div span{
+    font-weight: 700;
+    color: black;
+}
+#my-booking-main-div #car-booking-time div #span1{
+    margin-left: 2.5rem;
+}
+#my-booking-main-div #car-booking-time div #span2{
+    margin-left: 1.4rem;
+}
+#my-booking-main-div #car-booking-time div #span3{
+    margin-left: 1.3rem;
+}
+#my-booking-main-div #button-div{
+    border-left: 1px solid #CCCCCC;
+}
+#my-booking-main-div #button-div button{
+    padding: 0.8rem 2rem;
+    margin-top: 2.5rem;
+    margin-left: 2rem;
+    width: 8rem;
+    border-radius: 5rem;
+    border: 1px solid #007FED;
+}
+#my-booking-main-div #button-div #edit-button{
+    background-color: #007FED;
+    color: #FFFF;
+}
+#my-booking-main-div #button-div #cancel-button{
+    color: #007FED;
+}

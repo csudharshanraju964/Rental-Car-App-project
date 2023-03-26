@@ -17,6 +17,7 @@ import UserRegistration from './components/User/user-registartion/UserRegistrati
 import BookingDetails from "./pages/BookingDetails";
 import CarBooking from "./pages/CarBooking";
 import DateSelect from "./pages/DateSelect";
+import MyBooking from './pages/Mybooking';
 function App() {
   
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/dateselect" element={<DateSelect />} />
           <Route path="/carbooking" element={<CarBooking />}/>
           <Route path="/bookingdetails" element={<BookingDetails />} />
+          <Route path="/mybookings" element={<MyBooking />} />
         </Routes>
       </BrowserRouter>
     </div>
