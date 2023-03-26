@@ -20,8 +20,8 @@ router.post("/addcar", async (req, res) => {
     return res.status(400).json(error);
   }
 });
-
-router.post("/editcar", async (req, res) => {
+ 
+router.patch("/editcar", async (req, res) => {
   try {
     const car = await Car.findOne({ _id: req.body._id });
     car.name = req.body.name;
@@ -45,9 +45,9 @@ router.post("/editcar", async (req, res) => {
   }
 });
 
-router.post("/deletecar", async (req, res) => {
+router.delete("/deletecar", async (req, res) => {
   try {
-    await Car.findOneAndDelete({ _id: req.body.carid });
+    await Car.findOneAndDelete({ _id: req.body._id });
 
     res.send("Car deleted successfully");
   } catch (error) {

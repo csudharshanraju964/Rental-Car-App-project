@@ -1,6 +1,5 @@
 {
   "name": "server",
-<<<<<<< HEAD
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,21 +38,20 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-=======
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start":"nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^7.0.3",
-    "nodemon": "^2.0.22"
->>>>>>> 94742f413be7f9db515884cb9169c729a1cc34b8
+    ],
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.18.2",
+      "mongoose": "^7.0.3",
+      "nodemon": "^2.0.22"
+    }
   }
 }
