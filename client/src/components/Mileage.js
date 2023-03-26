@@ -5,29 +5,38 @@ import "../styles/CarTypeMileageSeating.css"
         
        <input
           type="checkbox"
-          checked={mileageSelect === "Less than 10KM"}
-          onChange={() => handleMileageCheckboxChange('Less than 10KM')}
+          checked={mileageSelect === 8}
+          onChange={() => handleMileageCheckboxChange(8)}
         />
-        Less than 10KM
+        8KM
         </label>
         <label>
         
        <input
           type="checkbox"
-          checked={mileageSelect === "15KM"}
-          onChange={() => handleMileageCheckboxChange('15KM')}
+          checked={mileageSelect === 10}
+          onChange={() => handleMileageCheckboxChange(10)}
         />
-         15KM
+         10KM
         </label>
         <label>
         
        <input
           type="checkbox"
-          checked={mileageSelect === "More than 15KM"}
-          onChange={() => handleMileageCheckboxChange('More than 15KM')}
+          checked={mileageSelect === 12}
+          onChange={() => handleMileageCheckboxChange(12)}
         />
-        More than 15KM
+          12KM
         </label>  
+        <label>
+        
+        <input
+           type="checkbox"
+           checked={mileageSelect === 15}
+           onChange={() => handleMileageCheckboxChange(15)}
+         />
+           15KM
+         </label> 
         </div>
  }
  export default Milleage;

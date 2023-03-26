@@ -31,17 +31,17 @@ const data=[{
     carType:"SUV",
     carName:"Tata Harrier",
     seat:8,
-    mileage:10,
+    mileage:12,
     rupeesPerKm:30,
     carNumber:"KL 70 C 7015"
 },
 {
-    startingDay:"10-Mar-2021",
+    startingDay:"10-Mar-2023",
     endingDay:"22-Mar-2021",
     carType:"UV",
     carName:"Tata Nexon",
     seat:6,
-    mileage:10,
+    mileage:15,
     rupeesPerKm:25,
     carNumber:"KL 70 C 7015"
 },
@@ -61,7 +61,7 @@ const data=[{
     carType:"SUV",
     carName:"Suzuki Swift",
     seat:6,
-    mileage:10,
+    mileage:8,
     rupeesPerKm:10,
     carNumber:"KL 70 C 7015"
 }]
@@ -79,21 +79,57 @@ function CarBooking(){
         seatingSelect: null,
         mileageSelect: null
     })
+    const [filteredData, setFilteredData] = useState([]);
     
+
+  
+
+
 const handleCarTypeCheckboxChange = (value) => {
     setCarDetails(prev => ({...prev, selected: prev.selected === value ? "" : value}));
   };
   
   const handleSeatingCheckboxChange = (value) => {
     setCarDetails(prev => ({...prev, seatingSelect: prev.seatingSelect === value ? "" : value}));
-  };
+    
+};
   
   const handleMileageCheckboxChange = (value) => {
     setCarDetails(prev => ({...prev, mileageSelect: prev.mileageSelect === value ? "" : value}));
-  };
+    
+};
 
 useEffect(()=>{
-    console.log(carDetails)
+    let datas
+    if(carDetails.startingDate){
+         datas=data.filter(item=>item.startingDay===carDetails.startingDate)
+    }
+
+    if(!carDetails.mileageSelect && !carDetails.seatingSelect && !carDetails.selected){
+        setFilteredData(datas)
+    }else{
+        let filtered = datas;
+    
+        if (carDetails.selected) {
+            if(carDetails.selected==="ALL"){
+                filtered=datas
+            }
+            else{
+                filtered = filtered.filter(item => item.carType === carDetails.selected);
+            }
+        }
+      
+        if (carDetails.seatingSelect) {
+          filtered = filtered.filter(item => item.seat === carDetails.seatingSelect);
+        }
+    
+        if (carDetails.mileageSelect) {
+          filtered = filtered.filter(item => item.mileage === carDetails.mileageSelect);
+        }
+      
+        setFilteredData(filtered);
+    }
+        
 },[carDetails])
 
     return <div>
@@ -118,7 +154,7 @@ useEffect(()=>{
     {mileageToggle && <Milleage mileageSelect={carDetails.mileageSelect} handleMileageCheckboxChange={handleMileageCheckboxChange}/>}
     {!RentalDate.start ? <h1>Please enter a date </h1>:
     <div id="car-detail-div">
-        {data.map(data=>{
+        {filteredData.map(data=>{
         return <div id="data-div">
                 <div id="img-div">
                     <img src={img}/>

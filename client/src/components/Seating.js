@@ -5,17 +5,17 @@ function Seating({seatingSelect,handleSeatingCheckboxChange}){
         
         <input
           type="checkbox"
-          checked={seatingSelect === 'Four seater'}
-          onChange={() => handleSeatingCheckboxChange('Four seater')}
+          checked={seatingSelect === 4}
+          onChange={() => handleSeatingCheckboxChange(4)}
         />
-        Four Seater
+        4 Seater
        </label>
        <label>
         
        <input
           type="checkbox"
-          checked={seatingSelect === '6 seater'}
-          onChange={() => handleSeatingCheckboxChange('6 seater')}
+          checked={seatingSelect === 6}
+          onChange={() => handleSeatingCheckboxChange(6)}
         />
         6 Seater
        </label>
@@ -23,10 +23,10 @@ function Seating({seatingSelect,handleSeatingCheckboxChange}){
         
        <input
           type="checkbox"
-          checked={seatingSelect === "More than 6 seat"}
-          onChange={() => handleSeatingCheckboxChange('More than 6 seat')}
+          checked={seatingSelect === 9}
+          onChange={() => handleSeatingCheckboxChange(9)}
         />
-        More than 6 Seat
+        9 Seater
         </label>   
     </div>
 }

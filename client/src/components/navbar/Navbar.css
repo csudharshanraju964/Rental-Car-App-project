@@ -14,15 +14,14 @@
     top: 0;
     overflow: hidden;
     background-color:white;
+<<<<<<< HEAD
     box-shadow: 0px 3px 6px #CBCBCB29;
+=======
+    border-bottom: 1px solid #ccc;
+>>>>>>> 89b7f8290fd13b91b1e6d4c1f65558732d0ebb24
 }
 
-h2{
-    font-family: 'candara';
-    font-size: 2.5rem;
-    letter-spacing: 0.2rem;
-    /* margin-left: 2rem; */
-}
+
 
 .logo {
     font-family: 'candara';

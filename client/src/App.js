@@ -20,17 +20,17 @@ import DateSelect from "./pages/DateSelect";
 import AdminHome from './components/Admin/admin-home/AdminHome';
 import AdminAddCar from './components/Admin/admin-add-car/AdminAddCar';
 function App() {
-  const [auth, setAuth] = useState("");
+  
   return (
     <div className="App">
       <BrowserRouter>
         <Toaster position="top-center" reverseOrder={false} />
-        <Navbar auth={auth} setAuth={setAuth}/>
+        <Navbar />
         <Routes>
           <Route element={<PublicRoute />}/>
-          <Route path='/' element={<AdminSignin setAuth={setAuth}/>}/>
+          <Route path='/' element={<AdminSignin />}/>
           <Route path='/admin-registration' element={<AdminRegistration />}/>
-          <Route path='/user-signin' element={<UserSignin setAuth={setAuth}/>}/>
+          <Route path='/user-signin' element={<UserSignin />}/>
           <Route path='/user-registration' element={<UserRegistration />}/>
           <Route path="/dateselect" element={<DateSelect />} />
           <Route path="/carbooking" element={<CarBooking />}/>
