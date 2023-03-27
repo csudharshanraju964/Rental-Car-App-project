@@ -154,7 +154,7 @@ function AdminAddCar({ setAuth }) {
                             {errors.availableFrom && <span className='error'>{errors.availableFrom}</span>}
                         </div>
 
-                        <div className='description'>
+                        <div>
                             <span htmlFor='availableTill' className='leftHeadings'>Available Till</span><br />
                             <input
                                 type="date"
@@ -167,46 +167,51 @@ function AdminAddCar({ setAuth }) {
                             {errors.availableTill && <span className='error'>{errors.availableTill}</span>}
                         </div>
                     </div>
-                    <div>
-                        <span htmlFor='description' className='leftHeadings'>Description </span><br />
+                    <div className='description'>
+                        <span htmlFor='description'>Description </span><br />
                         <textarea
                             type="text"
                             id='description'
                             name="description"
                             onChange={handleChange}
+                            rows="5" cols="50"
+                            className='descriptionBlock'
                         />
                         {errors.description && <span className='error'>{errors.description}</span>}
                     </div>
                 </div>
                 <div className='secondPart'>
                     <div>
-                        <span htmlFor='image'>Images</span><br />
-                        <button>Add</button>
+                        <span htmlFor='image' className='images'>Images</span><br />
+                        <button className='img-addBtn'>Add</button>
                         <input
                             type="image"
                             name="image"
                             id="image"
                             onChange={handleChange}
+                            className="imageinput"
                         />
                         {errors.description && <span className='error'>{errors.description}</span>}
                     </div>
-                    <div>
+                    <div className='carDetails'>
                         <span htmlFor='carDetails'>Car Details</span><br />
                         <textarea
                             type="text"
                             id="carDetails"
                             name="carDetails"
                             onChange={handleChange}
+                            rows="5" cols="50"
                         />
                         {errors.carDetails && <span className='error'>{errors.carDetails}</span>}
                     </div>
-                    <div>
+                    <div className='details'>
                         <span htmlFor='details'>Details</span><br />
                         <textarea
                             type="text"
                             id="details"
                             name="details"
                             onChange={handleChange}
+                            rows="5" cols="50"
                         />
                         {errors.details && <span className='error'>{errors.details}</span>}
                     </div>

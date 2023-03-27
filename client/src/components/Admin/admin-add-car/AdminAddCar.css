@@ -9,6 +9,7 @@
     display: flex;
     font-weight: normal;
     margin-top: 40px;
+    align-items: space-between;
 }
 
 label {
@@ -22,7 +23,7 @@ label {
     flex: 1;
     border: 1px solid #FFFFFF;
     margin-left: 80px;
-    width: 600px;
+    width: 50%;
     font-size: medium;
     font-weight: normal;
 }
@@ -30,15 +31,15 @@ label {
 .secondPart {
     flex: 2;
     border: 1px solid #FFFFFF;
-    margin-right: 50px;
-    width: 600px;
-    margin-left: 400px;
+    margin-right: 100px;
+    width: 50%;
+    margin-left: 150px;
     
 }
 
 .name {
     margin-left: 80px;
-    width: 350px;
+    width: 400px;
     padding: 8px;
     margin-top: 5px;
 }
@@ -77,18 +78,21 @@ label {
     height: 2.5rem;
     width: 6rem;
     align-self: last baseline;
-    background-color: #9bc1f4;
-    color: #FFFFFf;
+    background-color: #FFFFFF;
     font-weight: bold;
     font-size: 1rem;
     border-radius: 0.8rem;
-    border: none;
+    border: 1px solid #007FED;
     outline: none;
     cursor: var(--cursor);
+    position: relative;
+    margin-top: 35px;
+    opacity: 100%;
+    color: #4E94F4;
 }
 .addBtn{
     float: right;
-    margin-right: 50px;
+    margin-right: 150px;
     height: 2.5rem;
     width: 6rem;
     align-self: last baseline;
@@ -100,4 +104,38 @@ label {
     border: none;
     outline: none;
     cursor: var(--cursor);
+    margin-top: 35px;
+}
+
+.description {
+    margin-top:220px;
+    margin-left: 80px;
+}
+.descriptionBlock {
+    margin-bottom: 1px;
+    position: absolute;
+}
+.img-addBtn{
+    float: right;
+    margin-top: 0px;
+    margin-right: 150px;
+    size: 21px;
+    width: 50px;
+}
+#image{
+    margin-top: 5px;
+    margin-left: 25px;
+}
+
+.carDetails {
+    margin-top: 100px;
+    margin-left: 25px;
+}
+.details {
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.images {
+    margin-left: 25px;
 }
