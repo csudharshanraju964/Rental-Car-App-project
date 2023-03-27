@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CarContext } from "../components/CarRentalProvider";
-
+import {useEffect}from "react"
 import img from "../image/self-drive-norwa-car-people.png"
 import "../styles/BookingDetail.css"
 function BookingDetails(){
@@ -14,7 +14,11 @@ function BookingDetails(){
     const [hr,min,sec]=currentTime
     const DorN=sec.split(" ")
     const[secs,ANorFN]=DorN
-    
+    const Time=`${hr}:${min} ${ANorFN}`
+    useEffect(()=>{
+        setCarBooking({...carBooking,currentDate:Today,currentTime:Time})
+
+    },[])
     return <><div id="booking-status-div">
         <h2>Booking Details</h2>
         
@@ -34,7 +38,7 @@ function BookingDetails(){
             <div id="car-booking-time-div">
                 <div id="car-booking-id">Booking id <span id="booking-id">1</span></div>
                 <div id="car-booking-date">Booking Date <span id="booking-date">{Today}</span></div>
-                <div id="car-booking-time">Booking Time <span id="booking-time">{`${hr}:${min} ${ANorFN}`}</span></div>
+                <div id="car-booking-time">Booking Time <span id="booking-time">{Time}</span></div>
             </div>
             <div id="button-div">
                 <button id="cancel-btn" onClick={()=>{
@@ -46,7 +50,8 @@ function BookingDetails(){
                         seat:"",
                         mileage:"",
                         rupeesPerKm:"",
-                        carNumber:""
+                        carNumber:"",
+                        currentDate:""
                 })
                 navigate("/carbooking")
                 }}>Cancel</button>
@@ -67,7 +72,7 @@ function BookingDetails(){
                 <span>It is a long established fact that a reader will be distracted by the readable content</span>
             </div>
             <div id="proceed-button-div">
-                <button>Proceed</button>
+                <button onClick={()=>{console.log(carBooking)}}>Proceed</button>
             </div>
         </div>
     </div>

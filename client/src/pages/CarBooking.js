@@ -7,7 +7,7 @@ import Seating from "../components/Seating";
 import "../styles/Carbooking.css"
 import img from "../image/self-drive-norwa-car-people.png"
 const data=[{
-    startingDay:"1-Mar-2023",
+    startingDay:"10-Mar-2023",
     endingDay:"4-Mar-2023",
     carType:"SUV",
     carName:"Ford Mustang",
@@ -26,11 +26,11 @@ const data=[{
     rupeesPerKm:15,
     carNumber:"KL 70 C 7015"
 },{
-    startingDay:"20-Mar-2023",
+    startingDay:"10-Mar-2023",
     endingDay:"22-Mar-2021",
     carType:"SUV",
     carName:"Tata Harrier",
-    seat:8,
+    seat:9,
     mileage:12,
     rupeesPerKm:30,
     carNumber:"KL 70 C 7015"
@@ -46,7 +46,7 @@ const data=[{
     carNumber:"KL 70 C 7015"
 },
 {
-    startingDay:"15-Mar-2023",
+    startingDay:"10-Mar-2023",
     endingDay:"17-Mar-2023",
     carType:"UV",
     carName:"Toyota Fortuner",
@@ -56,7 +56,7 @@ const data=[{
     carNumber:"KL 70 C 7015"
 },
 {
-    startingDay:"20-Mar-2023",
+    startingDay:"10-Mar-2023",
     endingDay:"22-Mar-2023",
     carType:"SUV",
     carName:"Suzuki Swift",
@@ -173,7 +173,9 @@ useEffect(()=>{
                             seat:data.seat,
                             mileage:data.mileage,
                             rupeesPerKm:data.rupeesPerKm,
-                            carNumber:data.carNumber
+                            carNumber:data.carNumber,
+                            currentTime:"",
+                            currentDate:"",
                         })
                         navigate("/bookingdetails")
                     }}>Buy Now</button>

@@ -16,7 +16,9 @@ function CarRentalProvider({children}){
         seat:"",
         mileage:"",
         rupeesPerKm:"",
-        carNumber:""
+        carNumber:"",
+        currentTime:"",
+        currentDate:""
     })
     
     
