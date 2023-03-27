@@ -20,13 +20,13 @@ router.post("/addcar", async (req, res) => {
     return res.status(400).json(error);
   }
 });
- 
+
 router.patch("/editcar", async (req, res) => {
   try {
     const car = await Car.findOne({ _id: req.body._id });
     car.name = req.body.name;
     car.image = req.body.image;
-    car.type = req.body.fuelType;
+    car.type = req.body.type;
     car.rentPerHour = req.body.rentPerHour;
     car.capacity = req.body.capacity;
     car.availableFrom=req.body.availableFrom;
