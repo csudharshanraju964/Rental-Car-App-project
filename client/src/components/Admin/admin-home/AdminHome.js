@@ -15,7 +15,7 @@ function AdminHome({ setAuth }) {
             <br/>
             <div className='headerSection2'>
                 <div className='carHeading'>Cars</div>
-                <button className='addButton'>Add</button>
+                <button className='addButton' onClick={()=>{navigate("/admin-home/addCar")}}>Add</button>
             </div>
             <div className='cars-container'>
                 <div>

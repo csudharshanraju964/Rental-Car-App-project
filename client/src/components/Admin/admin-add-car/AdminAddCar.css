@@ -76,7 +76,7 @@ label {
     float: left;
     margin-left: 80px;
     height: 2.5rem;
-    width: 6rem;
+    width: 10rem;
     align-self: last baseline;
     background-color: #FFFFFF;
     font-weight: bold;
@@ -93,8 +93,10 @@ label {
 .addBtn{
     float: right;
     margin-right: 150px;
+    margin-left: 50%;
+    margin-bottom: 20px;
     height: 2.5rem;
-    width: 6rem;
+    width: 10rem;
     align-self: last baseline;
     background-color: #4E94F4;
     color: #FFFFFf;
@@ -103,6 +105,7 @@ label {
     border-radius: 0.8rem;
     border: none;
     outline: none;
+    position: absolute;
     cursor: var(--cursor);
     margin-top: 35px;
 }
@@ -138,4 +141,8 @@ label {
 
 .images {
     margin-left: 25px;
+}
+.buttons{
+    display: inline-block;
+    margin-left: 20%;
 }
