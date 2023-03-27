@@ -14,14 +14,14 @@ const adminAuthMiddleware = (req, resp, next) => {
     //console.log(decodedToken)
 
     if (_id){
-        req.vendor = _id;
+        req.admin = _id;
         next();
     }
     }catch(e){
         return resp.status(500).json({
             status: 'failure',
-            message: e.message
-        })
+            message: e.message       
+         })
     }
 }
 

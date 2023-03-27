@@ -5,15 +5,15 @@ const dbConnection=require('./db');
 app.use(express.json());
 
 const adminRoute=require('./routes/admin');
-// const proposalRoutes = require('./routes/proposal')
+const carRoutes = require('./routes/car')
 const userRoutes = require('./routes/user');
 
 app.use('/admin',adminRoute);
-// app.use('/proposal', proposalRoutes);
+app.use('/car', carRoutes);
 app.use('/user', userRoutes);
 
 app.use('/api/cars/' , require('./routes/carsRoute'))
-app.use('/api/users/' , require('./routes/usersRoute'))
+// app.use('/api/users/' , require('./routes/usersRoute'))
 app.use('/api/bookings/' , require('./routes/bookingsRoute'))
 
 app.get('/',(req,res)=>{
