@@ -23,7 +23,13 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'proposals',
         default: null
-    }
+    },
+    posts: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'bookings'
+        }
+      ]
 }, {timestamps: true});
 
 const User = mongoose.model('users', userSchema);
