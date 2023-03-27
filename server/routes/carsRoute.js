@@ -21,12 +21,12 @@ router.post("/addcar", async (req, res) => {
   }
 });
 
-router.post("/editcar", async (req, res) => {
+router.patch("/editcar", async (req, res) => {
   try {
     const car = await Car.findOne({ _id: req.body._id });
     car.name = req.body.name;
     car.image = req.body.image;
-    car.type = req.body.fuelType;
+    car.type = req.body.type;
     car.rentPerHour = req.body.rentPerHour;
     car.capacity = req.body.capacity;
     car.availableFrom=req.body.availableFrom;
@@ -45,9 +45,9 @@ router.post("/editcar", async (req, res) => {
   }
 });
 
-router.post("/deletecar", async (req, res) => {
+router.delete("/deletecar", async (req, res) => {
   try {
-    await Car.findOneAndDelete({ _id: req.body.carid });
+    await Car.findOneAndDelete({ _id: req.body._id });
 
     res.send("Car deleted successfully");
   } catch (error) {
