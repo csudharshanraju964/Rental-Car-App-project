@@ -9,16 +9,6 @@ function CarRentalProvider({ children }) {
         end: ""
     })
     const [carBooking, setCarBooking] = useState({
-        startingDay: "",
-        endingDay: "",
-        carType: "",
-        carName: "",
-        seat: "",
-        mileage: "",
-        rupeesPerKm: "",
-        carNumber: ""
-    })
-    const [carBooking, setCarBooking] = useState({
             startingDay: "",
             endingDay: "",
             carType: "",
