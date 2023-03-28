@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { CarRentalProvider } from './components/CarRentalProvider';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  <CarRentalProvider>
     <App />
+  </CarRentalProvider>
   </React.StrictMode>
 );
 

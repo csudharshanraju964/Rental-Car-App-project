@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from '../../../helpers/axios'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import './UserSignin.css'
+import { CarContext } from '../../CarRentalProvider';
 
 const userSigninURL = '/user/signin'
 
 
-function UserSignin({setAuth}) {
-
+function UserSignin() {
+  const {setAuth}=useContext(CarContext)
   const navigate = useNavigate()
 
   const [contact, setContact] = useState('')

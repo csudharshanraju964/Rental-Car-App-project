@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from '../../../helpers/axios'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import './AdminSignin.css'
+import { CarContext } from '../../CarRentalProvider';
 
 const AdminSigninURL = '/Admin/signin'
 
 
-function AdminSignin({setAuth}) {
-
+function AdminSignin() {
+const {setAuth}=useContext(CarContext)
   const navigate = useNavigate()
 
   const [contact, setContact] = useState('')

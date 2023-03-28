@@ -1,0 +1,274 @@
+#my-booking-main-div{
+    display: flex;
+    border:1px solid #CCCCCC;
+    width: 90%;
+    margin: 2rem 0rem 0rem 4rem;
+}
+#my-booking-main-div > #img-div{
+    width: 15rem;
+    padding :0.2rem;
+} 
+#my-booking-main-div > #img-div >img{
+    max-width: 100%;
+    object-fit: fill;
+}
+#my-booking-main-div #car-details-div{
+    padding: 0.2rem;
+    border-right: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+}
+#my-booking-main-div #car-details-div h2{
+    text-align: center;
+}
+#my-booking-main-div #car-details-div #car-number{
+    color: #818080;
+    font-weight: 700;
+}
+#my-booking-main-div #car-details-div #car-spec{
+    display: grid;
+    grid-template-columns: 10rem 10rem;
+    margin-left: 0.5rem;
+    color: #818080;
+}
+#my-booking-main-div #car-details-div #car-spec div{
+    margin-top: 0.3rem;
+}
+#my-booking-main-div #car-details-div #car-spec span{
+    color: black;
+    font-weight: bold;
+}
+#my-booking-main-div #car-details-div #car-spec #car-type{
+    margin-left: 2rem;
+}
+#my-booking-main-div #car-details-div #car-spec #car-mileage{
+    margin-left: 0.4rem;
+}
+#my-booking-main-div #car-details-div #car-spec #car-seat{
+    margin-left: 2rem;
+}
+#my-booking-main-div #car-details-div #car-spec #car-rsperkm{
+    margin-left: 0.7rem;
+    color:#32C348 ;
+}
+
+
+#my-booking-main-div #car-rent-date{
+    padding: 0 1rem; 
+    color:  #818080;
+    margin-top: 2.7rem;
+}
+#my-booking-main-div #car-rent-date div{
+    margin-top: 0.1rem;
+}
+#my-booking-main-div #car-rent-date span{
+    font-weight: 700;
+    color: black;
+}
+#my-booking-main-div #car-rent-date :first-child span{
+    margin-left: 1rem;
+}
+#my-booking-main-div #car-rent-date :last-child span{
+    margin-left: 1.25rem;
+}
+
+#my-booking-main-div #car-booking-time{
+    border-left:1px solid #CCCCCC;
+    
+    padding-top: 1.9rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#my-booking-main-div #car-booking-time div{
+    margin-top: 0.1rem;
+    color: #818080;
+}
+#my-booking-main-div #car-booking-time div span{
+    font-weight: 700;
+    color: black;
+}
+#my-booking-main-div #car-booking-time div #span1{
+    margin-left: 2.5rem;
+}
+#my-booking-main-div #car-booking-time div #span2{
+    margin-left: 1.4rem;
+}
+#my-booking-main-div #car-booking-time div #span3{
+    margin-left: 1.3rem;
+}
+#my-booking-main-div #button-div{
+    border-left: 1px solid #CCCCCC;
+}
+#my-booking-main-div #button-div button{
+    padding: 0.8rem 2rem;
+    margin-top: 2.5rem;
+    margin-left: 2rem;
+    width: 8rem;
+    border-radius: 5rem;
+    border: 1px solid #007FED;
+}
+#my-booking-main-div #button-div #edit-button{
+    background-color: #007FED;
+    color: #FFFF;
+}
+#my-booking-main-div #button-div #cancel-button{
+    color: #007FED;
+}
+
+
+
+.booking-status-div{
+    width: 58%;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-left: 2rem;
+    margin-top:4rem;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.booking-status-div .car-status-div{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+}
+.booking-status-div .img-div{
+    width: 10rem;
+    margin-left: 10rem;
+}
+.booking-status-div .img-div img{
+    max-width: 100%;
+}
+
+.car-status-div .car-name-div {
+    color: #818080;
+    margin-bottom: 0.3rem;
+}
+.car-status-div .car-name-div .car-name{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 2rem;
+    color: #1D1D1D;
+    
+}
+.car-status-div .car-number-div{
+    color: #818080;
+
+}
+.car-status-div .car-number-div .car-number{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 1rem;
+    color: #1D1D1D;
+    opacity: 70%;
+}
+
+.booking-status-div .car-rent-date-div{
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;   
+}
+.booking-status-div .car-rent-date-div div{
+    margin-bottom: 0.2rem;
+}
+.booking-status-div .car-rent-date-div{
+    color: #818080;
+}
+.booking-status-div .car-rent-date-div .start-date{
+    color: black;
+    margin-left: 2rem;
+}
+.booking-status-div .car-rent-date-div .end-date{
+    color: black;
+    margin-left: 2.5rem;
+}
+.booking-status-div .car-booking-time-div{
+    color: #818080;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+}
+.booking-status-div .car-booking-time-div div{
+    margin-bottom: 0.2rem;
+}
+.booking-status-div .car-booking-time-div  span{
+    color: black;
+}
+
+.booking-status-div .car-booking-time-div .car-booking-id .booking-id{
+    margin-left: 1.5rem;
+}
+.booking-status-div .car-booking-time-div .booking-date,.booking-time{
+    margin-left: 0.3rem;
+}
+.booking-status-div  .button-div {
+    padding: 1rem; 
+     
+}
+.booking-status-div  .button-div .cancel-btn{
+    border: 1px solid #007FED;
+    padding: 0.5rem 1.5rem;
+    margin-top: 1rem;
+    color: #007FED;
+    font-size: 1.1rem;
+    border-radius: 5rem;
+}
+
+
+
+
+
+.payment-div{
+    position:absolute;
+    top: 9.1rem;
+    left: 63%;
+    border: 1px solid #ccc;
+    padding:1rem 2rem;
+    width: 25%;
+    background-color: white;
+}
+.payment-div .price-details-div{
+    padding: 1rem 0rem;
+    border-bottom: 1px solid #ccc;
+}
+.payment-div .price-details-div div{
+    color: #818080;
+    margin-bottom: 0.5rem;
+}
+.payment-div .price-details-div .price-per-km{
+    color: black;
+    margin-left: 3rem;
+    font-size: medium;
+}
+.payment-div .price-details-div .price{
+    color: black;
+    margin-left: 5.5rem;
+    font-size: large;
+}
+.payment-div .price-details-div .tax{
+    color: black;
+    margin-left: 4.8rem;
+}
+.payment-div .sub-total-details-div{
+    padding: 1rem 0rem;
+}
+.payment-div .sub-total-details-div .sub-total-div{
+    font-size: large;
+    color: #818080;
+    font-weight: 600;
+}
+.payment-div .sub-total-details-div .sub-total-div span{
+    margin-left: 3.7rem;
+    color:#32C348;
+    font-weight: bold;
+}
+
+.payment-div .sub-total-details-div .permission-div{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+}
+.payment-div .sub-total-details-div .permission-div div{
+    font-size: x-large;
+    color: #32C348;
+    font-weight: 600;
+}
+
+
