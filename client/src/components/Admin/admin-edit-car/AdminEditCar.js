@@ -9,6 +9,8 @@ const AdminEditCar = ({ setAuth }) => {
     const { cars, setSelectedCar, selectedCar } = useContext(CarContext);
 
     const { carId } = useParams();
+    const [images, setImages] = useState([]);
+    const [selectedImages, setSelectedImages] = useState([]);
 
 
     // const [carDetails, setCarDetails] = useState(initialCarDetails);
@@ -18,6 +20,31 @@ const AdminEditCar = ({ setAuth }) => {
     //     const { name, value } = event.target;
     //     setCarDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
     // };
+    useEffect(() => {
+        axios.get("https://api.cloudinary.com/v1_1/dql4bctke/images")
+            .then(response => {
+                setImages(response.data.resources);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, [images]);
+
+    // Handle image selection
+    const handleImageSelect = (event) => {
+        const files = event.target.files;
+        const images = [];
+        for (let i = 0; i < files.length; i++) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                images.push(event.target.result);
+                if (i === files.length - 1) {
+                    setSelectedImages([...selectedImages, ...images]);
+                }
+            }
+            reader.readAsDataURL(files[i]);
+        }
+    }
     useEffect(() => {
         axios
             .get(`/api/cars/${carId}`)
@@ -195,16 +222,27 @@ const AdminEditCar = ({ setAuth }) => {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            <button className='img-addBtn'>Add</button>
+                            <button className='img-addBtn' onClick={() => {handleImageSelect()}}>Add</button>
                             <input
-                                type="image"
+                                type="file"
                                 name="image"
                                 id="image"
                                 value={selectedCar.images}
                                 onChange={handleInputChange}
                                 className="imageinput"
                                 alt="carimages"
+                                accept="image/*" multiple style={{ display: "none" }}
                             />
+                            <div style={{ display: "flex", flexWrap: "wrap" }}>
+                                {selectedImages.map((image, index) => (
+                                    <div key={index} style={{ width: "50px", height: "50px", marginLeft: "15px", marginTop: "15px" }}>
+                                        <img src={image} style={{ width: "50%", height: "50%", objectFit: "cover" }} />
+                                    </div>
+                                ))}
+                                {[...Array(6 - selectedImages.length)].map((_, index) => (
+                                    <div key={index} style={{ width: "50px", height: "50px", marginLeft: "15px", marginTop: "15px", border: "1px solid #ccc" }} />
+                                ))}
+                            </div>
                             {errors.description && <span className='error'>{errors.description}</span>}
                         </div>
                         <div className='carDetails'>
