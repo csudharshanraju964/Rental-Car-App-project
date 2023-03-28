@@ -1,0 +1,52 @@
+#car-type-inputfield{
+    position:absolute;
+    top: 12rem;
+    left: 2.5rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding :0.5rem 1rem 0.5rem 0.5rem;
+   border-radius: 4px;
+   background-color: #ffff;
+}
+#car-type-inputfield >label{
+    display: block;
+    font-weight: 100;
+    font-size: medium;
+    margin-left: 0;
+
+}
+#mileage-div {
+    position: absolute;
+    top: 12rem;
+    left: 19.5rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+    border-radius: 4px;
+    background-color: #ffff;
+}
+
+#mileage-div>label{
+    display: block;
+    font-weight: 100;
+    font-size: medium;
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+#seating-div {
+    position: absolute;
+    top: 12rem;
+    left: 10.5rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1rem 0.5rem 0.5rem;
+    border-radius: 4px;
+    background-color: #ffff;
+}
+#seating-div>label{
+    display: block;
+    font-weight: 100;
+    font-size: medium;
+    margin-left: 0;
+    margin-right: 0.5rem;
+}

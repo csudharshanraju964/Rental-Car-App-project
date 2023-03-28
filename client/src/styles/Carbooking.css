@@ -1,0 +1,99 @@
+body{
+    background-color: #f8f8f8;
+    
+}
+#car-booking-div{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border:1px solid #ccc
+}
+#car-booking-div > div{
+
+    margin-left: 2rem;
+}
+
+#car-booking-div div button {
+    padding:0.5rem 1rem;
+    border-radius:1rem;
+    background-color: #007FED;
+    color: #FFFFFF;
+    border:1px solid #007FED;
+}
+
+#filter-div{
+    padding:1rem;
+    border: 1px solid #ccc;
+    
+    
+}
+#filter-div >button{
+    margin-left: 4rem;
+    color: #707070;
+    border: 1px solid #ccc;
+    padding:0.5rem;
+    border-radius: 0.4rem;
+}
+
+
+#filter-div > #car-type{
+    margin-left: 2rem;
+}
+
+#filter-div > #car-type:hover{
+    background-color: #007FED;
+    color: #FFFFFF;
+}
+#filter-div > #seating:hover{
+    background-color: #007FED;
+    color: #FFFFFF;
+}
+#filter-div > #mileage:hover{
+    background-color: #007FED;
+    color: #FFFFFF;
+}
+
+#car-detail-div{
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    margin-left: 2rem;
+    padding :2rem 0rem;
+}
+
+#data-div{
+    width: 85%;
+    border: 1px solid #ccc;
+    padding:0.5rem;
+    margin-bottom: 2rem;
+    
+}
+
+#data-div #img-div img{
+    max-width: 100%;
+}
+
+#data-div >#button-div button{
+    width: 50%;
+    padding: 0.4rem;
+}
+#data-div > #button-div :last-child{
+    background-color: #007FED;
+    color: white;
+    border-color: #007FED;
+}
+
+#data-div > #details-div{
+    padding: 1rem 0;
+}
+
+#data-div > #details-div div{
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    font-size: large;
+}
+#data-div > #details-div div:last-child{
+    text-align: right;
+    color:#32C348;
+    font-weight: bold;
+}
