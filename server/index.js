@@ -17,7 +17,7 @@ app.use('/admin',adminRoute);
 app.use('/car', carRoutes);
 app.use('/user', userRoutes);
 
-app.use('/api/cars/' , require('./routes/carsRoute'))
+app.use('/car' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))
 app.use("/bookings", (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
