@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 const adminAuthMiddleware = (req, resp, next) => {
-    const token = req.headers.authorization
+    const token = req.headers.authorization.split(" ")[1]
     if(!token){
         return resp.status(401).json({
             status: 'failure',

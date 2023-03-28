@@ -4,7 +4,7 @@ const carSchema=new mongoose.Schema({
     name:{type:String,required:true},
     model:{type:String,required:true},
     capacity:{type:String,required:true},
-    image:{type:String,required:true},
+    image:{type:Array},
     type:{type:String,required:true},
     milage:{type:Number,required:true},
     rentPerHour : {type : Number , required : true},
