@@ -49,6 +49,7 @@ function AdminAddCar({ setAuth }) {
                     description: '',
                     details: ''
                 });
+                navigate("/admin-home");
                 setErrors({});
             })
             .catch(error => {
@@ -64,7 +65,7 @@ function AdminAddCar({ setAuth }) {
             <div className='header'>
                 <h4>Add Car Details</h4>
             </div>
-            <form onSubmit={handleSubmit} >
+            <form >
                 <div className="form-container">
                     <div className='firstPart'>
                         <div>
@@ -230,7 +231,7 @@ function AdminAddCar({ setAuth }) {
                         <button className='cancelBtn' onClick={() => { navigate("/admin-home") }}>Cancel</button>
                     </div>
                     <div>
-                        <button className='addBtn'>Add</button>
+                        <button className='addBtn' onClick={handleSubmit}>Add</button>
                     </div>
                 </div>
 

@@ -11,6 +11,9 @@
     margin-top: 15px;
     margin-left: 80px;
 }
+.headingSection2{
+    display: inline-block;
+}
 
 .carHeading {
     text-align: left;
@@ -20,7 +23,9 @@
 
 .addButton {
     float: right;
-    margin-right: 50px;
+    margin-right: 80px;
+    margin-left: 80%;
+    /* margin-top: 10px; */
     height: 2.5rem;
     width: 6rem;
     align-self: last baseline;
@@ -32,5 +37,12 @@
     border: none;
     outline: none;
     cursor: var(--cursor);
+    position: absolute;
     
+}
+.cars-container{
+   display: flex;
+}
+.car-card{
+   justify-content: space-between;
 }
