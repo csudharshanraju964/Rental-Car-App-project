@@ -31,7 +31,7 @@ function AdminAddCar({ setAuth }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Make a POST request to the backend with the car details
-        axios.post('/api/cars', car)
+        axios.post('http://localhost:8000/car/addcar', car)
             .then(response => {
                 // Update the UI with the response from the backend
                 console.log(response.data);

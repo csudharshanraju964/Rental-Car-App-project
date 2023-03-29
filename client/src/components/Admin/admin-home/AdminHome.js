@@ -10,10 +10,10 @@ function AdminHome({ setAuth }) {
 
     // Fetch car data from database on component mount
     useEffect(() => {
-        fetch('/api/cars')
+        fetch('http://localhost:8000/car/getallcars')
             .then(response => response.json())
             .then(data => setCars(data));
-    }, [cars]);
+    }, []);
 
     return (
         <>
