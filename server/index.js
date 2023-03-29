@@ -5,6 +5,8 @@ const dbConnection=require('./db');
 const jwt=require("jsonwebtoken")
 const dotenv = require('dotenv');
 dotenv.config()
+const cors=require("cors")
+app.use(cors())
 
 app.use(express.json());
 const User=require("./model/User")
@@ -20,7 +22,7 @@ app.use('/user', userRoutes);
 app.use('/car' , require('./routes/carsRoute'))
 // app.use('/api/users/' , require('./routes/usersRoute'))
 app.use("/bookings", (req, res, next) => {
-    const token = req.headers.authorization.split(" ")[1];
+    const token = req.headers.authorization;
     if (token) {
       jwt.verify(token, SECRET_KEY, async (err, decoded) => {
         

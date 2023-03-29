@@ -27,17 +27,25 @@ router.post('/addbooking', async (req, res) => {
     seat,
     mileage,
     rupeesPerKm,
-    carNumber
+    carNumber,
+    bookingId,
+    currentDate,
+    currentTime,
    } = req.body;
 
   try {
     const newPost = new bookings({
     carName:carName,
     carNumber:carNumber ,
+    carType:carType,
     startDate:startingDay,
     endDate:endingDay,
-    totalHours: mileage,
-    totalAmount: rupeesPerKm,
+    pricePerKm: rupeesPerKm,
+    mileage:mileage,
+    seat:seat,
+    bookingId:bookingId,
+    bookingDate:currentDate,
+    bookingTime:currentTime,
     author: req.user._id
     });
 
@@ -55,6 +63,7 @@ router.post('/addbooking', async (req, res) => {
 });
 router.delete('/deletebooking', async (req, res) => {
   const { _id } = req.body;
+  console.log(_id)
 
   try {
     // Remove the post with the given ID from the bookings collection

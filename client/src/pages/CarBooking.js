@@ -7,6 +7,7 @@ import Seating from "../components/Seating";
 import "../styles/Carbooking.css"
 import img from "../image/self-drive-norwa-car-people.png"
 const data=[{
+    _id:"1",
     startingDay:"10-Mar-2023",
     endingDay:"4-Mar-2023",
     carType:"SUV",
@@ -17,6 +18,7 @@ const data=[{
     carNumber:"KL 70 C 7015"
 },
 {
+    _id:"2",
     startingDay:"10-Mar-2023",
     endingDay:"23-Mar-2023",
     carType:"UV",
@@ -26,6 +28,7 @@ const data=[{
     rupeesPerKm:15,
     carNumber:"KL 70 C 7015"
 },{
+    _id:"3",
     startingDay:"10-Mar-2023",
     endingDay:"22-Mar-2021",
     carType:"SUV",
@@ -36,6 +39,7 @@ const data=[{
     carNumber:"KL 70 C 7015"
 },
 {
+    _id:"4",
     startingDay:"10-Mar-2023",
     endingDay:"22-Mar-2021",
     carType:"UV",
@@ -46,6 +50,7 @@ const data=[{
     carNumber:"KL 70 C 7015"
 },
 {
+    _id:"5",
     startingDay:"10-Mar-2023",
     endingDay:"17-Mar-2023",
     carType:"UV",
@@ -56,6 +61,7 @@ const data=[{
     carNumber:"KL 70 C 7015"
 },
 {
+    _id:"6",
     startingDay:"10-Mar-2023",
     endingDay:"22-Mar-2023",
     carType:"SUV",
@@ -155,7 +161,7 @@ useEffect(()=>{
     {!RentalDate.start ? <h1>Please enter a date </h1>:
     <div id="car-detail-div">
         {filteredData.map(data=>{
-        return <div id="data-div">
+        return <div id="data-div" key={data._id}>
                 <div id="img-div">
                     <img src={img}/>
                 </div>
@@ -176,6 +182,7 @@ useEffect(()=>{
                             carNumber:data.carNumber,
                             currentTime:"",
                             currentDate:"",
+                            bookingId:`CAR${data._id}`
                         })
                         navigate("/bookingdetails")
                     }}>Buy Now</button>

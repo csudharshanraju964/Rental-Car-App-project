@@ -5,7 +5,8 @@ import {useEffect}from "react"
 import img from "../image/self-drive-norwa-car-people.png"
 import "../styles/BookingDetail.css"
 function BookingDetails(){
-    const {carBooking,setCarBooking}=useContext(CarContext)
+    
+    const {carBooking,setCarBooking,usertoken}=useContext(CarContext)
     const navigate=useNavigate()
     const currentDate=new Date().toDateString().split(" ")
     const currentTime=new Date().toLocaleTimeString().split(":")
@@ -36,7 +37,7 @@ function BookingDetails(){
             <div>End Date <span id="end-date">{` ${carBooking.endingDay}`}</span></div>  
             </div>
             <div id="car-booking-time-div">
-                <div id="car-booking-id">Booking id <span id="booking-id">1</span></div>
+                <div id="car-booking-id">Booking id <span id="booking-id">{carBooking.bookingId}</span></div>
                 <div id="car-booking-date">Booking Date <span id="booking-date">{Today}</span></div>
                 <div id="car-booking-time">Booking Time <span id="booking-time">{Time}</span></div>
             </div>
@@ -51,7 +52,9 @@ function BookingDetails(){
                         mileage:"",
                         rupeesPerKm:"",
                         carNumber:"",
-                        currentDate:""
+                        currentDate:"",
+                        currentTime:"",
+                        bookingId:""
                 })
                 navigate("/carbooking")
                 }}>Cancel</button>
@@ -72,7 +75,18 @@ function BookingDetails(){
                 <span>It is a long established fact that a reader will be distracted by the readable content</span>
             </div>
             <div id="proceed-button-div">
-                <button onClick={()=>{console.log(carBooking)}}>Proceed</button>
+                <button onClick={()=>{
+                    fetch("http://localhost:8000/bookings/addbooking",{
+                        method:"POST",
+                        headers:{
+                            "Content-Type": "application/json",
+                            "Authorization": `${usertoken}`
+                        },
+                        body:JSON.stringify(carBooking)
+                    }).then(res=>{console.log("hi")
+                        navigate("/mybookings")}).catch(err=>console.log(err))
+                    
+                }}>Proceed</button>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ import axios from '../../../helpers/axios'
 import toast from 'react-hot-toast';
 import './UserRegistration.css'
 
-const userRegistrationURL = '/user/registration'
+const userRegistrationURL = 'http://localhost:8000/user/registration'
 
 function UserRegistration() {
 

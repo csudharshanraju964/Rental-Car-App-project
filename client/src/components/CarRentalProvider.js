@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 
 const CarContext = createContext()
 function CarRentalProvider({ children }) {
+    const usertoken=localStorage.getItem('token')
     const [auth, setAuth] = useState("");
     const [RentalDate, setRentalDate] = useState({
         start: "",
@@ -18,7 +19,8 @@ function CarRentalProvider({ children }) {
             rupeesPerKm: "",
             carNumber: "",
             currentTime: "",
-            currentDate: ""
+            currentDate: "",
+            bookinId:""
         })
     const [selectedCar, setSelectedCar] = useState({
             name: "",
@@ -36,7 +38,7 @@ function CarRentalProvider({ children }) {
         });
 
 
-        return<CarContext.Provider value={{ auth, setAuth, RentalDate, setRentalDate, carBooking, setCarBooking, selectedCar, setSelectedCar }}>
+        return<CarContext.Provider value={{ auth, setAuth, RentalDate, setRentalDate, carBooking, setCarBooking, selectedCar, setSelectedCar,usertoken }}>
             { children }
     </CarContext.Provider >
 }

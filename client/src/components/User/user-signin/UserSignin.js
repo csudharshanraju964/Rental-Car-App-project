@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './UserSignin.css'
 import { CarContext } from '../../CarRentalProvider';
 
-const userSigninURL = '/user/signin'
+const userSigninURL = 'http://localhost:8000/user/signin'
 
 
 function UserSignin() {
@@ -42,7 +42,7 @@ function UserSignin() {
         localStorage.setItem('token', (response.data.token))
         localStorage.setItem('userName', (response.data.name))
         setAuth(response.data.name)
-        navigate('/user')
+        navigate('/dateselect')
       }
       else {
         setPasswordErr('Incorrect Password')
