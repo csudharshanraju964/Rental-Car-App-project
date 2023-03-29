@@ -1,5 +1,6 @@
 const express=require('express');
 const app=express();
+const cors=require('cors')
 const port=process.env.Port || 8000;
 const dbConnection=require('./db');
 const jwt=require("jsonwebtoken")
@@ -14,6 +15,9 @@ SECRET_KEY=process.env.JWT_SECRET
 const adminRoute=require('./routes/admin');
 const carRoutes = require('./routes/car')
 const userRoutes = require('./routes/user');
+app.use(cors());
+app.options('*', cors());
+
 
 app.use('/admin',adminRoute);
 app.use('/car', carRoutes);

@@ -47,7 +47,7 @@ const AdminEditCar = ({ setAuth }) => {
     }
     useEffect(() => {
         axios
-            .get(`/api/cars/${carId}`)
+            .get(`http://localhost:8000/car/getallcar/${carId}`)
             .then((response) => {
                 setSelectedCar(response.data);
             })
@@ -67,7 +67,7 @@ const AdminEditCar = ({ setAuth }) => {
 
     const handleSaveClick = () => {
         axios
-            .patch(`/api/cars/${carId}`, selectedCar)
+            .patch(`http://localhost:8000/car/editcar/${carId}`, selectedCar)
             .then((response) => {
                 // handle successful save, such as showing a success message to the user
                 console.log('Car added successfully');
@@ -80,7 +80,7 @@ const AdminEditCar = ({ setAuth }) => {
             });
     };
     const handleDelete = () => {
-        axios.delete(`/api/cars/${carId}`, selectedCar)
+        axios.delete(`http://localhost:8000/car/deletecar/${carId}`, selectedCar)
             .then((response) => {
                 console.log("Car deleted successfully");
                 navigate("/admin-home");
