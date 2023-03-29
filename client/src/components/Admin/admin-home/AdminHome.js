@@ -28,14 +28,14 @@ function AdminHome({ setAuth }) {
             <div className='cars-container'>
                 <div className='car-card'>
                     {cars.map(car => (
-                        <div className="car-card" key={car.id} onClick={() => navigate(`/admin-home/editCar/${car.id}`)}>
+                        <div className="car-card" key={car.id} onClick={() => navigate(`/admin-home/editCar`)}>
                             <div className='image'>
                                <img src={car.image} alt="car"/>
                             </div>
-                            <h5>{car.capacity}</h5>
-                            <span>{car.name}</span>
-                            <span>{car.rentPerHour}</span>
-                            <div>{car.availableFrom}</div>
+                            <h5 className='car-capacity'>{car.capacity}</h5>
+                            <span className='car-name'>{car.name}</span>
+                            <span className='car-rent'>{car.rentPerHour}</span>
+                            <div className='car-info'>{car.availableFrom}</div>
                         </div>
                     ))}
                 </div>

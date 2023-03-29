@@ -150,7 +150,7 @@ function AdminAddCar({ setAuth }) {
                                     id='availableFrom'
                                     name='avialbleFrom'
                                     placeholder='DD MM YYYY'
-                                    value={car.availableFrom}
+                                    // value={car.availableFrom}
                                     onChange={handleChange}
                                     className="optionsSelector"
                                 />
@@ -164,7 +164,7 @@ function AdminAddCar({ setAuth }) {
                                     id='availableTill'
                                     name='avialbleTill'
                                     placeholder='DD MM YYYY'
-                                    value={car.availableTill}
+                                    // value={car.availableTill}
                                     onChange={handleChange}
                                     className="optionsSelector"
                                 />
@@ -188,12 +188,13 @@ function AdminAddCar({ setAuth }) {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            <button className='img-addBtn'>Add</button>
+                            {/* <button className='img-addBtn'>Add</button> */}
                             <input
-                                type="image"
+                                type="url"
                                 name="image"
                                 id="image"
                                 value={car.image}
+                                placeholder="Enter image Url"
                                 onChange={handleChange}
                                 className="imageinput"
                                 alt="carimages"
