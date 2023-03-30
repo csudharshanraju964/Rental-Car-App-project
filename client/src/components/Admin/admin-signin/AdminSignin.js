@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import './AdminSignin.css'
 import { CarContext } from '../../CarRentalProvider';
 
-const AdminSigninURL = '/Admin/signin'
+const AdminSigninURL = 'http://localhost:8000/admin/signin'
 
 
 function AdminSignin() {
@@ -38,10 +38,10 @@ const {setAuth}=useContext(CarContext)
       toast.dismiss()
       if (response.data.success) {
         //we have to store token in localStorage
-        localStorage.setItem('token', (response.data.data.token))
+        localStorage.setItem('admintoken', (response.data.data.token))
         localStorage.setItem('AdminName', (response.data.data.name))
         setAuth(response.data.data.name)
-        navigate('/Admin')
+        navigate('/admin-home')
       }
       else {
         setPasswordErr('Incorrect Password')

@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 const CarContext = createContext()
 function CarRentalProvider({ children }) {
     const usertoken=localStorage.getItem('token')
+    const admintoken=localStorage.getItem("admintoken")
     const [auth, setAuth] = useState("");
     const [RentalDate, setRentalDate] = useState({
         start: "",
@@ -38,7 +39,7 @@ function CarRentalProvider({ children }) {
         });
 
 
-        return<CarContext.Provider value={{ auth, setAuth, RentalDate, setRentalDate, carBooking, setCarBooking, selectedCar, setSelectedCar,usertoken }}>
+        return<CarContext.Provider value={{ auth, setAuth, RentalDate, setRentalDate, carBooking, setCarBooking, selectedCar, setSelectedCar,usertoken,admintoken }}>
             { children }
     </CarContext.Provider >
 }

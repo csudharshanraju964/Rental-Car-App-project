@@ -6,8 +6,7 @@ const dbConnection=require('./db');
 const jwt=require("jsonwebtoken")
 const dotenv = require('dotenv');
 dotenv.config()
-const cors=require("cors")
-app.use(cors())
+
 
 app.use(express.json());
 const User=require("./model/User")

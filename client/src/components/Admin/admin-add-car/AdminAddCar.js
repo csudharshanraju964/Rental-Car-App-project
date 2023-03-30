@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./AdminAddCar.css";
+import { CarContext } from '../../CarRentalProvider';
 
 
 function AdminAddCar({ setAuth }) {
 
-
+    const{admintoken}=useContext(CarContext)    
     const navigate = useNavigate()
     const [car, setCar] = useState({
         name: '',
@@ -31,7 +32,14 @@ function AdminAddCar({ setAuth }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Make a POST request to the backend with the car details
-        axios.post('http://localhost:8000/car/addcar', car)
+        fetch('http://localhost:8000/car/addcar',{
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `${admintoken}`
+            },
+            body:JSON.stringify(car)
+        })
             .then(response => {
                 // Update the UI with the response from the backend
                 console.log(response.data);

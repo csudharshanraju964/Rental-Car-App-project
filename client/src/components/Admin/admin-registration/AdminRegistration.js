@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import './AdminRegistration.css'
 
 
-const adminRegistrationURL = '/Admin/registration'
+const adminRegistrationURL = 'http://localhost:8000/admin/registration'
 
 function AdminRegistration() {
 
