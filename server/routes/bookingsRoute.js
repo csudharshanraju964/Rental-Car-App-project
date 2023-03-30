@@ -6,6 +6,15 @@ const User=require("../model/User")
 const app=express()
 app.use(express.json())
 
+router.get("/getallcars", async (req, res) => {
+  try {
+    const cars = await Car.find();
+    res.status(200).json(cars);
+  } catch (error) {
+    return res.status(400).json(error);
+  }
+});
+
 router.get('/getallbookings', async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate('posts');
@@ -19,6 +28,7 @@ router.get('/getallbookings', async (req, res) => {
 
 
 router.post('/addbooking', async (req, res) => {
+  console.log(req.body)
   const { 
     startingDay,
     endingDay,
@@ -31,6 +41,7 @@ router.post('/addbooking', async (req, res) => {
     bookingId,
     currentDate,
     currentTime,
+    image
    } = req.body;
 
   try {
@@ -46,6 +57,7 @@ router.post('/addbooking', async (req, res) => {
     bookingId:bookingId,
     bookingDate:currentDate,
     bookingTime:currentTime,
+    image:image,
     author: req.user._id
     });
 

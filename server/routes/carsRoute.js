@@ -5,7 +5,7 @@ const Car = require("../models/carModel");
 router.get("/getallcars", async (req, res) => {
   try {
     const cars = await Car.find();
-    res.send(cars);
+    res.status(200).json(cars);
   } catch (error) {
     return res.status(400).json(error);
   }

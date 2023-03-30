@@ -1,82 +1,82 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { json, Link, useNavigate } from "react-router-dom";
 import { CarContext } from "../components/CarRentalProvider";
 import CarType from "../components/CarType";
 import Milleage from "../components/Mileage";
 import Seating from "../components/Seating";
 import "../styles/Carbooking.css"
 import img from "../image/self-drive-norwa-car-people.png"
-const data=[{
-    _id:"1",
-    startingDay:"10-Mar-2023",
-    endingDay:"4-Mar-2023",
-    carType:"SUV",
-    carName:"Ford Mustang",
-    seat:4,
-    mileage:10,
-    rupeesPerKm:70,
-    carNumber:"KL 70 C 7015"
-},
-{
-    _id:"2",
-    startingDay:"10-Mar-2023",
-    endingDay:"23-Mar-2023",
-    carType:"UV",
-    carName:"Honda City",
-    seat:6,
-    mileage:10,
-    rupeesPerKm:15,
-    carNumber:"KL 70 C 7015"
-},{
-    _id:"3",
-    startingDay:"10-Mar-2023",
-    endingDay:"22-Mar-2021",
-    carType:"SUV",
-    carName:"Tata Harrier",
-    seat:9,
-    mileage:12,
-    rupeesPerKm:30,
-    carNumber:"KL 70 C 7015"
-},
-{
-    _id:"4",
-    startingDay:"10-Mar-2023",
-    endingDay:"22-Mar-2021",
-    carType:"UV",
-    carName:"Tata Nexon",
-    seat:6,
-    mileage:15,
-    rupeesPerKm:25,
-    carNumber:"KL 70 C 7015"
-},
-{
-    _id:"5",
-    startingDay:"10-Mar-2023",
-    endingDay:"17-Mar-2023",
-    carType:"UV",
-    carName:"Toyota Fortuner",
-    seat:6,
-    mileage:15,
-    rupeesPerKm:30,
-    carNumber:"KL 70 C 7015"
-},
-{
-    _id:"6",
-    startingDay:"10-Mar-2023",
-    endingDay:"22-Mar-2023",
-    carType:"SUV",
-    carName:"Suzuki Swift",
-    seat:6,
-    mileage:8,
-    rupeesPerKm:10,
-    carNumber:"KL 70 C 7015"
-}]
+// const data=[{
+//     _id:"1",
+//     startingDay:"10-Mar-2023",
+//     endingDay:"4-Mar-2023",
+//     carType:"SUV",
+//     carName:"Ford Mustang",
+//     seat:4,
+//     mileage:10,
+//     rupeesPerKm:70,
+//     carNumber:"KL 70 C 7015"
+// },
+// {
+//     _id:"2",
+//     startingDay:"10-Mar-2023",
+//     endingDay:"23-Mar-2023",
+//     carType:"UV",
+//     carName:"Honda City",
+//     seat:6,
+//     mileage:10,
+//     rupeesPerKm:15,
+//     carNumber:"KL 70 C 7015"
+// },{
+//     _id:"3",
+//     startingDay:"10-Mar-2023",
+//     endingDay:"22-Mar-2021",
+//     carType:"SUV",
+//     carName:"Tata Harrier",
+//     seat:9,
+//     mileage:12,
+//     rupeesPerKm:30,
+//     carNumber:"KL 70 C 7015"
+// },
+// {
+//     _id:"4",
+//     startingDay:"10-Mar-2023",
+//     endingDay:"22-Mar-2021",
+//     carType:"UV",
+//     carName:"Tata Nexon",
+//     seat:6,
+//     mileage:15,
+//     rupeesPerKm:25,
+//     carNumber:"KL 70 C 7015"
+// },
+// {
+//     _id:"5",
+//     startingDay:"10-Mar-2023",
+//     endingDay:"17-Mar-2023",
+//     carType:"UV",
+//     carName:"Toyota Fortuner",
+//     seat:6,
+//     mileage:15,
+//     rupeesPerKm:30,
+//     carNumber:"KL 70 C 7015"
+// },
+// {
+//     _id:"6",
+//     startingDay:"10-Mar-2023",
+//     endingDay:"22-Mar-2023",
+//     carType:"SUV",
+//     carName:"Suzuki Swift",
+//     seat:6,
+//     mileage:8,
+//     rupeesPerKm:10,
+//     carNumber:"KL 70 C 7015"
+// }]
 function CarBooking(){
     const {RentalDate}=useContext(CarContext)
     const[carTypeToggle,setCarTypeToggle]=useState(false)
     const[seatingToggle,setSeatingToggle]=useState(false)
     const[mileageToggle,setMileageToggle]=useState(false)
-    const {carBooking,setCarBooking}=useContext(CarContext)
+    const {carBooking,setCarBooking,usertoken}=useContext(CarContext)
     const navigate=useNavigate()
     const[carDetails,setCarDetails]=useState({
         startingDate:RentalDate.start,
@@ -86,8 +86,16 @@ function CarBooking(){
         mileageSelect: null
     })
     const [filteredData, setFilteredData] = useState([]);
-    
-
+    const[data,setdata]=useState([])
+    useEffect(()=>{
+        fetch("http://localhost:8000/bookings/getallcars",{
+            headers:{
+                "Authorization":usertoken
+            }
+        }).then(res=>res.json()).then(data=>{
+            console.log(data)
+            setdata(data)})
+    },[])
   
 
 
@@ -105,10 +113,12 @@ const handleCarTypeCheckboxChange = (value) => {
     
 };
 
+let carNumber="KL 70 5897"
 useEffect(()=>{
+if(data.length){
     let datas
     if(carDetails.startingDate){
-         datas=data.filter(item=>item.startingDay===carDetails.startingDate)
+         datas=data.filter(item=>item.availableFrom===carDetails.startingDate)
     }
 
     if(!carDetails.mileageSelect && !carDetails.seatingSelect && !carDetails.selected){
@@ -121,22 +131,23 @@ useEffect(()=>{
                 filtered=datas
             }
             else{
-                filtered = filtered.filter(item => item.carType === carDetails.selected);
+                filtered = filtered.filter(item => item.type === carDetails.selected);
             }
         }
       
         if (carDetails.seatingSelect) {
-          filtered = filtered.filter(item => item.seat === carDetails.seatingSelect);
+          filtered = filtered.filter(item => item.capacity === carDetails.seatingSelect);
         }
     
         if (carDetails.mileageSelect) {
-          filtered = filtered.filter(item => item.mileage === carDetails.mileageSelect);
+          filtered = filtered.filter(item => item.milage === carDetails.mileageSelect);
         }
       
         setFilteredData(filtered);
     }
+    }
         
-},[carDetails])
+},[data,carDetails])
 
     return <div>
         <div id="car-booking-div">
@@ -163,23 +174,24 @@ useEffect(()=>{
         {filteredData.map(data=>{
         return <div id="data-div" key={data._id}>
                 <div id="img-div">
-                    <img src={img}/>
+                    <img src={data.image}/>
                 </div>
                 <div id="details-div">
-                    <div>{data.carName}</div>
-                    <div>{`${data.rupeesPerKm} Rs/Km`}</div>
+                    <div>{data.name}</div>
+                    <div>{`${data.rentPerHour} Rs/Km`}</div>
                 </div>
                 <div id="button-div"><button>Fare Details</button>
                     <button onClick={()=>{
                         setCarBooking({
-                            startingDay:data.startingDay,
-                            endingDay:data.endingDay,
-                            carType:data.carType,
-                            carName:data.carName,
-                            seat:data.seat,
-                            mileage:data.mileage,
-                            rupeesPerKm:data.rupeesPerKm,
-                            carNumber:data.carNumber,
+                            startingDay:data.availableFrom,
+                            endingDay:data.availableTill,
+                            carType:data.type,
+                            carName:data.name,
+                            seat:data.capacity,
+                            mileage:data.milage,
+                            rupeesPerKm:data.rentPerHour,
+                            carNumber:carNumber,
+                            image:data.image,
                             currentTime:"",
                             currentDate:"",
                             bookingId:`CAR${data._id}`

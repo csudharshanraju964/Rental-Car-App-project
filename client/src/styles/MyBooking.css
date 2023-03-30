@@ -172,6 +172,14 @@
 .booking-status-div .car-rent-date-div{
     color: #818080;
 }
+.booking-status-div .car-rent-date-div #origin{
+    color: black;
+    margin-left: 3.8rem;
+}
+.booking-status-div .car-rent-date-div #destination{
+    color: black;
+    margin-left: 1.7rem;
+}
 .booking-status-div .car-rent-date-div .start-date{
     color: black;
     margin-left: 2rem;
@@ -180,6 +188,19 @@
     color: black;
     margin-left: 2.5rem;
 }
+.booking-status-div .car-rent-date-div #map{
+    position: absolute;
+    top:340px;
+    left:425px;
+    width: 15rem;
+    height: 7rem;    
+
+}
+iframe{
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .booking-status-div .car-booking-time-div{
     color: #818080;
     border-bottom: 1px solid #ccc;
@@ -193,7 +214,7 @@
 }
 
 .booking-status-div .car-booking-time-div .car-booking-id .booking-id{
-    margin-left: 1.5rem;
+    margin-left: 1.6rem;
 }
 .booking-status-div .car-booking-time-div .booking-date,.booking-time{
     margin-left: 0.3rem;

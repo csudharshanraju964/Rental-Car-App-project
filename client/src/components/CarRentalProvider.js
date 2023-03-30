@@ -21,7 +21,8 @@ function CarRentalProvider({ children }) {
             carNumber: "",
             currentTime: "",
             currentDate: "",
-            bookinId:""
+            bookinId:"",
+            image:""
         })
     const [selectedCar, setSelectedCar] = useState({
             id:"",
