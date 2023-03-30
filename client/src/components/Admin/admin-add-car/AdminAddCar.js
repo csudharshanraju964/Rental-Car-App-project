@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./AdminAddCar.css";
@@ -24,14 +24,18 @@ function AdminAddCar({ setAuth }) {
         details: ''
     });
     const [errors, setErrors] = useState({});
-
+    const[filterDate,setFilterDate]=useState({
+        availableFrom:"",
+        availableTill:""
+    })
     const handleChange = (event) => {
         setCar({ ...car, [event.target.name]: event.target.value });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
         // Make a POST request to the backend with the car details
+        console.log(car)
         fetch('http://localhost:8000/car/addcar',{
             method:"POST",
             headers:{
@@ -66,6 +70,20 @@ function AdminAddCar({ setAuth }) {
                 setErrors(error.response.data);
             });
     };
+      
+        useEffect(()=>{
+            if(filterDate.availableFrom && filterDate.availableTill){
+             let dateFrom=new Date(filterDate.availableFrom)
+             let dateTill=new Date(filterDate.availableTill)
+             let options = { day: "2-digit", month: "short", year: "numeric" };
+             let rentalStartDate = dateFrom.toLocaleDateString("en-GB", options).split(" ").join("-");
+             let rentalEndDate = dateTill.toLocaleDateString("en-GB", options).split(" ").join("-");
+             setTimeout(() => {
+                setCar({...car,availableFrom:rentalStartDate,availableTill:rentalEndDate})
+             },1000);
+            
+            }
+        },[filterDate])
 
 
     return (
@@ -159,7 +177,8 @@ function AdminAddCar({ setAuth }) {
                                     name='availableFrom'
                                     placeholder='DD MM YYYY'
                                     // value={car.availableFrom}
-                                    onChange={handleChange}
+                                    onChange={(e)=>{
+                                        setFilterDate((prev)=>({...prev,availableFrom:e.target.value}))}}
                                     className="optionsSelector"
                                 />
                                 {errors.availableFrom && <span className='error'>{errors.availableFrom}</span>}
@@ -173,7 +192,8 @@ function AdminAddCar({ setAuth }) {
                                     name='availableTill'
                                     placeholder='DD MM YYYY'
                                     // value={car.availableTill}
-                                    onChange={handleChange}
+                                    onChange={(e)=>{
+                                        setFilterDate((prev)=>({...prev,availableTill:e.target.value}))}}
                                     className="optionsSelector"
                                 />
                                 {errors.availableTill && <span className='error'>{errors.availableTill}</span>}

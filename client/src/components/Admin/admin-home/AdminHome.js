@@ -18,7 +18,8 @@ function AdminHome({ setAuth }) {
               }
         })
             .then(response => response.json())
-            .then(data => setCars(data));
+            .then(data => {setCars(data)
+                console.log(data)});
     }, []);
 
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CarContext } from '../../CarRentalProvider';
@@ -7,29 +7,16 @@ import "./AdminEditCar.css"
 const AdminEditCar = ({ setAuth }) => {
     const navigate = useNavigate()
     const { cars, setSelectedCar, selectedCar,admintoken } = useContext(CarContext);
-
+    const timeoutIdRef = useRef(null);
     const { carId } = useParams();
 
     // const [carDetails, setCarDetails] = useState(initialCarDetails);
     const [errors, setErrors] = useState({});
 
-    
-    // useEffect(() => {
-    //     axios
-    //         .patch(`http://localhost:8000/car/editcar`,{
-    //             headers:{
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: carId
-    //         })
-    //         .then((response) => {
-    //             setSelectedCar(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.error(error.response.data);
-    //             setErrors(error.response.data);
-    //         });
-    // }, [cars, carId, setSelectedCar]);
+    const[filterEditDate,setFilterEditDate]=useState({
+        availableFrom:"",
+        availableTill:""
+    })
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -82,6 +69,21 @@ const AdminEditCar = ({ setAuth }) => {
             });
             navigate("/admin-home");
     }
+    
+    useEffect(()=>{
+        if(filterEditDate.availableFrom && filterEditDate.availableTill){
+         let dateFrom=new Date(filterEditDate.availableFrom)
+         let dateTill=new Date(filterEditDate.availableTill)
+         let options = { day: "2-digit", month: "short", year: "numeric" };
+         let rentalStartDate = dateFrom.toLocaleDateString("en-GB", options).split(" ").join("-");
+         let rentalEndDate = dateTill.toLocaleDateString("en-GB", options).split(" ").join("-");
+         
+         setTimeout(() => {
+            setSelectedCar({...selectedCar,availableFrom:rentalStartDate,availableTill:rentalEndDate})
+         },1000);
+        
+        }
+    },[filterEditDate])
 
     return (
         <div>
@@ -173,9 +175,10 @@ const AdminEditCar = ({ setAuth }) => {
                                     type="date"
                                     id='availableFrom'
                                     name='avialbleFrom'
-                                    value={selectedCar.availableFrom}
+                                    //value={selectedCar.availableFrom}
                                     placeholder='DD MM YYYY'
-                                    onChange={handleInputChange}
+                                    onChange={(e)=>{
+                                        setFilterEditDate((prev)=>({...prev,availableFrom:e.target.value}))}}
                                     className="optionsSelector"
                                 />
                                 {errors.availableFrom && <span className='error'>{errors.availableFrom}</span>}
@@ -188,8 +191,9 @@ const AdminEditCar = ({ setAuth }) => {
                                     id='availableTill'
                                     name='avialbleTill'
                                     placeholder='DD MM YYYY'
-                                    onChange={handleInputChange}
-                                    value={selectedCar.availableTill}
+                                    onChange={(e)=>{
+                                        setFilterEditDate((prev)=>({...prev,availableTill:e.target.value}))}}
+                                    //value={selectedCar.availableTill}
                                     className="optionsSelector"
                                 />
                                 {errors.availableTill && <span className='error'>{errors.availableTill}</span>}
