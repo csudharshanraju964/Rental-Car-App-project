@@ -33,7 +33,7 @@ function AdminHome({ setAuth }) {
                 <button className='addButton' onClick={() => {navigate("/admin-home/addCar") }}>Add</button>
             </div>
             <div className='cars-container'>
-                <div className='car-card'>
+                <div className='cards-grid'>
                     {cars.map(car => (
                         <div className="car-card" key={car._id} onClick={() => {
                             setSelectedCar({name:car.name, model: car.model,
@@ -49,7 +49,7 @@ function AdminHome({ setAuth }) {
                             details: car.details,
                             id:car._id})
                             navigate(`/admin-home/editCar`)}}>
-                            <div className='image'>
+                            <div className='image-div'>
                                <img src={car.image} alt="car"/>
                             </div>
                             <h5 className='car-capacity'>{car.capacity}</h5>

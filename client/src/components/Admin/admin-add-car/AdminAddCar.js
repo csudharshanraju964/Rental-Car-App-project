@@ -112,8 +112,9 @@ function AdminAddCar({ setAuth }) {
                                 <span htmlFor="type" className='leftHeadings'>Type</span><br />
                                 <select id="type" name="type" value={car.type} onChange={handleChange} className="optionsSelector">
                                     <option value=""></option>
-                                    <option value="type1">XUV</option>
-                                    <option value="type2">UV</option>
+                                    <option value="SUV">SUV</option>
+                                    <option value="UV">UV</option>
+                                    <option value="Others">Others</option>
 
                                 </select>
                                 {errors.type && <span className="error">{errors.type}</span>}
@@ -136,9 +137,9 @@ function AdminAddCar({ setAuth }) {
                                 <span htmlFor='model' className='leftHeadings'>Model</span><br />
                                 <select id='model' name='model' value={car.model} onChange={handleChange} className="optionsSelector">
                                     <option value=""></option>
-                                    <option value="Nexson">Nexon</option>
-                                    <option value="TataPunch">Tata Punch</option>
-                                    <option value="Tiago">Tiago</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
                                 </select>
                                 {errors.model && <span className="error">{errors.model}</span>}
                             </div>
@@ -148,7 +149,9 @@ function AdminAddCar({ setAuth }) {
                                 <span htmlFor='milage' className='leftHeadings'>Milage</span><br />
                                 <select id='milage' name='milage' value={car.milage} onChange={handleChange} className="optionsSelector">
                                     <option value=""></option>
+                                    <option value="8">8Km/lit</option>
                                     <option value="10">10Km/lit</option>
+                                    <option value="12">12Km/lit</option>
                                     <option value="15">15Km/lit</option>
                                     <option value='morethan15'>&gt;15Km/hr</option>
                                 </select>
