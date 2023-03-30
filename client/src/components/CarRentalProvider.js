@@ -24,6 +24,7 @@ function CarRentalProvider({ children }) {
             bookinId:""
         })
     const [selectedCar, setSelectedCar] = useState({
+            id:"",
             name: "",
             model: "",
             capacity: "",

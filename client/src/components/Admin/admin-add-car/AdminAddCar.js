@@ -156,9 +156,9 @@ function AdminAddCar({ setAuth }) {
                                 <input
                                     type="date"
                                     id='availableFrom'
-                                    name='avialbleFrom'
+                                    name='availableFrom'
                                     placeholder='DD MM YYYY'
-                                    value={car.availableFrom}
+                                    // value={car.availableFrom}
                                     onChange={handleChange}
                                     className="optionsSelector"
                                 />
@@ -170,9 +170,9 @@ function AdminAddCar({ setAuth }) {
                                 <input
                                     type="date"
                                     id='availableTill'
-                                    name='avialbleTill'
+                                    name='availableTill'
                                     placeholder='DD MM YYYY'
-                                    value={car.availableTill}
+                                    // value={car.availableTill}
                                     onChange={handleChange}
                                     className="optionsSelector"
                                 />
@@ -196,12 +196,13 @@ function AdminAddCar({ setAuth }) {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            <button className='img-addBtn'>Add</button>
+                            {/* <button className='img-addBtn'>Add</button> */}
                             <input
-                                type="image"
+                                type="url"
                                 name="image"
                                 id="image"
                                 value={car.image}
+                                placeholder="Enter image Url"
                                 onChange={handleChange}
                                 className="imageinput"
                                 alt="carimages"

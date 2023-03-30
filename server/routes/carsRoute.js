@@ -12,6 +12,7 @@ router.get("/getallcars", async (req, res) => {
 });
 
 router.post("/addcar", async (req, res) => {
+  
   try {
     const newcar = new Car(req.body);
     await newcar.save();
@@ -21,9 +22,10 @@ router.post("/addcar", async (req, res) => {
   }
 });
 
-router.patch("/editcar", async (req, res) => {
+router.put("/editcar", async (req, res) => {
+  
   try {
-    const car = await Car.findOne({ _id: req.body._id });
+    const car = await Car.findOne({ _id: req.body.id });
     car.name = req.body.name;
     car.image = req.body.image;
     car.type = req.body.type;
@@ -46,8 +48,9 @@ router.patch("/editcar", async (req, res) => {
 });
 
 router.delete("/deletecar", async (req, res) => {
+  console.log(req.body)
   try {
-    await Car.findOneAndDelete({ _id: req.body._id });
+    await Car.findOneAndDelete({ _id: req.body.id });
 
     res.send("Car deleted successfully");
   } catch (error) {

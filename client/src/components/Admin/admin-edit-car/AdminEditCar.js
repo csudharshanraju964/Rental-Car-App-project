@@ -6,56 +6,30 @@ import "./AdminEditCar.css"
 
 const AdminEditCar = ({ setAuth }) => {
     const navigate = useNavigate()
-    const { cars, setSelectedCar, selectedCar } = useContext(CarContext);
+    const { cars, setSelectedCar, selectedCar,admintoken } = useContext(CarContext);
 
     const { carId } = useParams();
-    const [images, setImages] = useState([]);
-    const [selectedImages, setSelectedImages] = useState([]);
-
 
     // const [carDetails, setCarDetails] = useState(initialCarDetails);
     const [errors, setErrors] = useState({});
 
-    // const handleInputChange = (event) => {
-    //     const { name, value } = event.target;
-    //     setCarDetails((prevDetails) => ({ ...prevDetails, [name]: value }));
-    // };
-    useEffect(() => {
-        axios.get("https://api.cloudinary.com/v1_1/dql4bctke/images")
-            .then(response => {
-                setImages(response.data.resources);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }, [images]);
-
-    // Handle image selection
-    const handleImageSelect = (event) => {
-        const files = event.target.files;
-        const images = [];
-        for (let i = 0; i < files.length; i++) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                images.push(event.target.result);
-                if (i === files.length - 1) {
-                    setSelectedImages([...selectedImages, ...images]);
-                }
-            }
-            reader.readAsDataURL(files[i]);
-        }
-    }
-    useEffect(() => {
-        axios
-            .get(`http://localhost:8000/car/getallcar/${carId}`)
-            .then((response) => {
-                setSelectedCar(response.data);
-            })
-            .catch((error) => {
-                console.error(error.response.data);
-                setErrors(error.response.data);
-            });
-    }, [cars, carId, setSelectedCar]);
+    
+    // useEffect(() => {
+    //     axios
+    //         .patch(`http://localhost:8000/car/editcar`,{
+    //             headers:{
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: carId
+    //         })
+    //         .then((response) => {
+    //             setSelectedCar(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.error(error.response.data);
+    //             setErrors(error.response.data);
+    //         });
+    // }, [cars, carId, setSelectedCar]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -66,31 +40,47 @@ const AdminEditCar = ({ setAuth }) => {
     };
 
     const handleSaveClick = () => {
-        axios
-            .patch(`http://localhost:8000/car/editcar/${carId}`, selectedCar)
+        
+            fetch(`http://localhost:8000/car/editcar`,{
+                method:"PUT",
+                headers:{
+                    "Content-Type": "application/json",
+                    "Authorization":admintoken
+                },
+                body:JSON.stringify(selectedCar)
+
+            })
             .then((response) => {
                 // handle successful save, such as showing a success message to the user
                 console.log('Car added successfully');
-                navigate("/admin-home");
             })
             .catch((error) => {
                 // handle error, such as showing an error message to the user
                 console.error(error.response.data);
                 setErrors(error.response.data);
             });
+            navigate("/admin-home");
     };
     const handleDelete = () => {
-        axios.delete(`http://localhost:8000/car/deletecar/${carId}`, selectedCar)
-            .then((response) => {
-                console.log("Car deleted successfully");
-                navigate("/admin-home");
+        fetch(`http://localhost:8000/car/deletecar`,{
+            method:"DELETE",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization":admintoken
+            },
+            body:JSON.stringify(selectedCar)
 
-            })
+        })
+            .then((response) => {
+                console.log(response);
+
+            }).then(console.log("car deleted successfully"))
             .catch((error) => {
                 // handle error, such as showing an error message to the user
                 console.error(error.response.data);
                 setErrors(error.response.data);
             });
+            navigate("/admin-home");
     }
 
     return (
@@ -222,27 +212,18 @@ const AdminEditCar = ({ setAuth }) => {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            <button className='img-addBtn' onClick={() => {handleImageSelect()}}>Add</button>
+                            {/* <button className='img-addBtn' onClick={() => {handleImageSelect()}}>Add</button> */}
                             <input
-                                type="file"
+                                type="url"
                                 name="image"
                                 id="image"
                                 value={selectedCar.images}
                                 onChange={handleInputChange}
-                                className="imageinput"
+                                // className="imageinput"
                                 alt="carimages"
-                                accept="image/*" multiple style={{ display: "none" }}
+                                // accept="image/*" multiple style={{ display: "none" }}
                             />
-                            <div style={{ display: "flex", flexWrap: "wrap" }}>
-                                {selectedImages.map((image, index) => (
-                                    <div key={index} style={{ width: "50px", height: "50px", marginLeft: "15px", marginTop: "15px" }}>
-                                        <img src={image} style={{ width: "50%", height: "50%", objectFit: "cover" }} />
-                                    </div>
-                                ))}
-                                {[...Array(6 - selectedImages.length)].map((_, index) => (
-                                    <div key={index} style={{ width: "50px", height: "50px", marginLeft: "15px", marginTop: "15px", border: "1px solid #ccc" }} />
-                                ))}
-                            </div>
+                            
                             {errors.description && <span className='error'>{errors.description}</span>}
                         </div>
                         <div className='carDetails'>
@@ -272,7 +253,22 @@ const AdminEditCar = ({ setAuth }) => {
                     </div>
                 </div>
                 <div className='buttons'>
-                    <button onClick={() => { navigate("/admin-home") }} id="cancelBtn">Cancel</button>
+                    <button onClick={() => { 
+                        setSelectedCar({
+                            id:"",
+                            name: "",
+                            model: "",
+                            capacity: "",
+                            image: "",
+                            type: "",
+                            milage: "",
+                            rentPerHour: "",
+                            availableFrom: "",
+                            availableTill: "",
+                            carDetails: "",
+                            description: "",
+                            details: ""})
+                        navigate("/admin-home") }} id="cancelBtn">Cancel</button>
                     <button onClick={handleDelete} id="delBtn">Delete</button>
                     <button onClick={handleSaveClick} id="saveBtn">Save</button>
 

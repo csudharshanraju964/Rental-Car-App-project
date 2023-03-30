@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const RegistrationModel = require('../model/registration')
 const router = require('express').Router()
-
+SECRET_KEY = process.env.JWT_SECRET
 
 router.post('/registration', async (req, resp) => {
 
@@ -43,7 +43,7 @@ router.post('/signin', async (req, resp) => {
                     _id: admin._id
                 }
                 //jwt.sign(payload, secretKey, expiryTime)
-                const token = jwt.sign(dataToBeSentToFrontEnd, "secretKey", { expiresIn: '1d'})
+                const token = jwt.sign(dataToBeSentToFrontEnd, SECRET_KEY, { expiresIn: '1d'})
                 console.log(token)
                 resp.status(200).json({ success: true, message: 'LogIn Successful', data: { token, name: admin.name } })
             }

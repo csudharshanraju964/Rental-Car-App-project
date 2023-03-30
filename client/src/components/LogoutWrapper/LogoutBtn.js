@@ -11,7 +11,7 @@ function LogoutBtn({setAuth}) {
 
     //handle logout function
     const handleLogout = () => {
-        localStorage.removeItem('adminName') || localStorage.removeItem('userName') || localStorage.removeItem('token')
+        localStorage.removeItem('adminName') || localStorage.removeItem('userName') || localStorage.removeItem('token')||localStorage.removeItem("admintoken")
         setAuth("");
         toast.success('You logged out successfully!!')
         navigate('/')

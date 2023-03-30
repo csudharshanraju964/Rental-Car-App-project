@@ -11,7 +11,8 @@
     margin-top: 15px;
     margin-left: 80px;
 }
-.headingSection2{
+
+.headingSection2 {
     display: inline-block;
 }
 
@@ -38,11 +39,62 @@
     outline: none;
     cursor: var(--cursor);
     position: absolute;
-    
+
 }
-.cars-container{
-   display: flex;
+
+/* .cars-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-.car-card{
-   justify-content: space-between;
+
+.car-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    flex-basis: calc(33.33% - 10px);
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    width: 200px;
 }
+
+.car-card:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.image {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.car-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.car-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.car-capacity {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.car-rent {
+    font-size: 16px;
+    margin-bottom: 10px;
+} */
