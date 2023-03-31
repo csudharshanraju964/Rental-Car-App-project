@@ -69,6 +69,16 @@
 }
 .car-name {
     padding-bottom: 0%;
+    padding-top: 10px;
+    font-weight: bold;
+}
+.car-rent {
+    float: right;
+    margin-right: 15px;
+    font-weight: bold;
+}
+.car-capacity {
+    font-weight: normal;
 }
 /* .image-div{
     width: 100%;

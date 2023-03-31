@@ -52,10 +52,9 @@ function AdminHome({ setAuth }) {
                             <div className='image-div'>
                                <img src={car.image} alt="car"/>
                             </div>
-                            <h5 className='car-capacity'>{`${car.capacity} Persons ` }</h5>
                             <h5 className='car-capacity'>{`${car.capacity} Seater`}</h5>
                             <span className='car-name'>{car.name}</span>
-                            <span className='car-rent'>{car.rentPerHour}</span>
+                            <span className='car-rent'>{`${car.rentPerHour} Rs/Hr`}</span>
                             <div className='car-info'>{car.availableFrom}</div>
                         </div>
                     ))}

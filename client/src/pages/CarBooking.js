@@ -197,7 +197,7 @@ if(data.length){
                             bookingId:`CAR${data._id}`
                         })
                         navigate("/bookingdetails")
-                    }}>Buy Now</button>
+                    }}>Book Now</button>
                 </div>
                 
         </div>

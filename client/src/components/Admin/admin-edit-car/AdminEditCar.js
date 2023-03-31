@@ -128,15 +128,12 @@ const AdminEditCar = ({ setAuth }) => {
                             </div>
                             <div>
                                 <span htmlFor='capacity' className='leftHeadings'>Capacity</span><br />
-                                <input
-                                    type="text"
-                                    id="capacity"
-                                    name="capacity"
-                                    value={selectedCar.capacity}
-                                    placeholder="Capacity"
-                                    onChange={handleInputChange}
-                                    className="optionsSelector"
-                                />
+                                <select id='capacity' name='capacity' value={selectedCar.capacity} onChange={handleInputChange} className="optionsSelector">
+                                    <option value=""></option>
+                                    <option value="4">4 Seater</option>
+                                    <option value="6">6 Seater</option>
+                                    <option value="9">9 Seater</option>
+                                </select>
                                 {errors.capacity && <span className="error">{errors.capacity}</span>}
 
                             </div>
@@ -160,7 +157,7 @@ const AdminEditCar = ({ setAuth }) => {
                                     <option value="10">10Km/lit</option>
                                     <option value="12">12Km/lit</option>
                                     <option value="15">15Km/lit</option>
-                                    <option value='morethan15'>&gt;15Km/hr</option>
+                                    
                                 </select>
                                 {errors.milage && <span className="error">{errors.milage}</span>}
                             </div>
