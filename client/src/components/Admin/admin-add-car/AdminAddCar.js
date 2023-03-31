@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./AdminAddCar.css";
 import { CarContext } from '../../CarRentalProvider';
@@ -92,7 +92,7 @@ function AdminAddCar({ setAuth }) {
             }
         },[filterDate])
 
-
+        if(admintoken){
     return (
         <>
             <div className='header'>
@@ -286,7 +286,9 @@ function AdminAddCar({ setAuth }) {
 
 
         </>
-    )
+    )}else{
+        return <h1>Login to access this page<Link to="/"> <span>Login</span></Link></h1>
+    }
 }
 
 export default AdminAddCar

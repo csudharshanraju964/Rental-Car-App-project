@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CarContext } from "../components/CarRentalProvider";
 import {useEffect}from "react"
 import img from "../image/self-drive-norwa-car-people.png"
@@ -20,6 +20,7 @@ function BookingDetails(){
         setCarBooking({...carBooking,currentDate:Today,currentTime:Time})
 
     },[])
+    if(usertoken){
     return <><div id="booking-status-div">
         <h2>Booking Details</h2>
         
@@ -94,6 +95,8 @@ function BookingDetails(){
             </div>
         </div>
     </div>
-    </>
+    </>}else{
+        return <h1>Login to access this page<Link to="/"> <span>Login</span></Link></h1>
+    }
 }
 export default BookingDetails;

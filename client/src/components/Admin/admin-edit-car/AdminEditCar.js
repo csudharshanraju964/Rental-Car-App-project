@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CarContext } from '../../CarRentalProvider';
 import "./AdminEditCar.css"
 
@@ -91,7 +91,7 @@ const AdminEditCar = ({ setAuth }) => {
         
         }
     },[filterEditDate])
-
+    if(admintoken){
     return (
         <div>
             <div className='header'>
@@ -297,7 +297,9 @@ const AdminEditCar = ({ setAuth }) => {
 
 
         </div>
-    );
+    );}else{
+        return <h1>Login to access this page<Link to="/"> <span>Login</span></Link></h1>
+    }
 };
 
 export default AdminEditCar;

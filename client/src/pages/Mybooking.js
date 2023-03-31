@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useContext } from "react"
 import { CarContext } from "../components/CarRentalProvider"
-import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 // const bookingData=[{
@@ -28,7 +28,6 @@ import { useNavigate } from "react-router-dom"
 //     carNumber:"KL 70 C 7015"
 // }]
 function MyBooking(){
-    const navigate = useNavigate();
     const [edit,setEdit]=useState(false)
     const [bookingData,setBookingData]=useState([])
     const [bookedCarDetails,setBookedCarDetails]=useState({})
@@ -43,6 +42,7 @@ function MyBooking(){
         
         .then(res=>res.json()).then(data=>{setBookingData(data)}).catch(err=>console.log(err))
     },[canceltrigger])
+    if(usertoken){
     return<>
     {!edit && bookingData.map((item)=>{
         console.log(item)
@@ -63,7 +63,7 @@ function MyBooking(){
             <div>End Date <span>{item.endDate}</span></div>
             </div>
         <div id="car-booking-time">
-            <div>Booking id <span id="span1">{item.bookingId.substring(0,6)}</span></div>
+            <div>Booking id <span id="span1">{item.bookingId.substring(0,8)}</span></div>
         <div>Booking Date <span id="span2">{item.bookingDate}</span></div>
         <div>Booking Time <span id="span3">{item.bookingTime}</span></div>
         </div>
@@ -82,11 +82,7 @@ function MyBooking(){
                               },
                         body:JSON.stringify(item)
                         }).then(res=>res.json()).then(data=>{console.log(data)
-                        
-                        setcanceltrigger(prev=>!prev)
-                        navigate('/carbooking')
-                    }).catch(err=>console.log(err))
-                        
+                        setcanceltrigger(prev=>!prev)}).catch(err=>console.log(err))
             }}>Cancel</button>
         </div>
     </div>})
@@ -140,6 +136,8 @@ function MyBooking(){
     </div>
 </>
 }
-</>
+</>}else{
+   return <h1>Login to access this page<Link to="/"> <span>Login</span></Link></h1>
+}
 }
 export default MyBooking 

@@ -1,5 +1,5 @@
 import React, { useState,useEffect, useContext } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CarContext } from '../../CarRentalProvider';
 import "./AdminHome.css";
 
@@ -21,7 +21,7 @@ function AdminHome({ setAuth }) {
             .then(data => {setCars(data)
                 console.log(data)});
     }, []);
-
+    if(admintoken){
     return (
         <>
             <div className='adminHeading'>
@@ -62,7 +62,9 @@ function AdminHome({ setAuth }) {
             </div>
 
         </>
-    )
+    )}else{
+        return <h1>Login to access this page<Link to="/"> <span>Login</span></Link></h1>
+    }
 }
 
 export default AdminHome
