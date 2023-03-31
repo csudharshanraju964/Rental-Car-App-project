@@ -48,7 +48,7 @@ router.put("/editcar", async (req, res) => {
 });
 
 router.delete("/deletecar", async (req, res) => {
-  console.log(req.body)
+  
   try {
     await Car.findOneAndDelete({ _id: req.body.id });
 

@@ -46,7 +46,7 @@ app.use("/bookings", (req, res, next) => {
 });
 app.use("/car", (req, res, next) => {
   const token = req.headers.authorization;
-  console.log(token,"hi")
+  
   if (token) {
     jwt.verify(token, SECRET_KEY, async (err, decoded) => {
 

@@ -6,7 +6,7 @@ import { CarContext } from '../../CarRentalProvider';
 
 
 function AdminAddCar({ setAuth }) {
-
+    const[image,setImage]=useState("")
     const{admintoken}=useContext(CarContext)    
     const navigate = useNavigate()
     const [car, setCar] = useState({
@@ -70,7 +70,14 @@ function AdminAddCar({ setAuth }) {
                 setErrors(error.response.data);
             });
     };
-      
+    async function cloudinaryFetch(value){
+        const response=await fetch("https://api.cloudinary.com/v1_1/dql4bctke/image/upload",{
+          method:"POST",
+          body:value
+        })
+        const data = await response.json()
+        return data.url
+      }
         useEffect(()=>{
             if(filterDate.availableFrom && filterDate.availableTill){
              let dateFrom=new Date(filterDate.availableFrom)
@@ -219,14 +226,24 @@ function AdminAddCar({ setAuth }) {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            {/* <button className='img-addBtn'>Add</button> */}
+                            { <button className='img-addBtn' onClick={async(e)=>{
+                                e.preventDefault()
+                                    const data=new FormData()
+                                    data.append("file",image)
+                                   data.append("upload_preset","insta_clone_ragesh")
+                                   data.append("cloud_name","dql4bctke")
+                                   const imageUrl=await cloudinaryFetch(data) 
+                                   setCar(prev=>({...prev,image:imageUrl}))
+                            }}>Add</button> }
                             <input
-                                type="url"
+                                type="file"
                                 name="image"
                                 id="image"
-                                value={car.image}
+                                
                                 placeholder="Enter image Url"
-                                onChange={handleChange}
+                                onChange={(e)=>{
+                                    setImage(e.target.files[0])
+                                }}
                                 className="imageinput"
                                 alt="carimages"
                             />

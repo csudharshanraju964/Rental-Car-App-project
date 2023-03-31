@@ -35,16 +35,14 @@ router.post('/signin', async (req, resp) => {
         const admin = await RegistrationModel.findOne({ contact: req.body.contact })
         if (admin) {
             const matchPassword = await bcrypt.compare(req.body.password, admin.password)
-            console.log(matchPassword)
-            console.log(admin)
-            console.log(req.body)
+
             if (matchPassword) {
                 const dataToBeSentToFrontEnd = {
                     _id: admin._id
                 }
                 //jwt.sign(payload, secretKey, expiryTime)
                 const token = jwt.sign(dataToBeSentToFrontEnd, SECRET_KEY, { expiresIn: '1d'})
-                console.log(token)
+                
                 resp.status(200).json({ success: true, message: 'LogIn Successful', data: { token, name: admin.name } })
             }
             else {

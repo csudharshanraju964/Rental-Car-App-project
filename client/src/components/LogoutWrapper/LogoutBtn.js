@@ -11,13 +11,13 @@ function LogoutBtn({setAuth,usertoken}) {
 
     //handle logout function
     const handleLogout = () => {
-        localStorage.removeItem('adminName') || localStorage.removeItem('userName') || localStorage.removeItem('token')||localStorage.removeItem("admintoken")
+        localStorage.removeItem('AdminName') || localStorage.removeItem('userName') || localStorage.removeItem('token')||localStorage.removeItem("admintoken")
         setAuth("");
         toast.success('You logged out successfully!!')
         navigate('/')
     }
 
-    const auth = (localStorage.getItem('adminName')) || (localStorage.getItem('userName'))
+    const auth = (localStorage.getItem('AdminName')) || (localStorage.getItem('userName'))
     const profileName = auth ? (auth.toUpperCase()) : auth
     //console.log(auth)
 

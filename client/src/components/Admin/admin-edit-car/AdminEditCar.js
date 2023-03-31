@@ -17,7 +17,7 @@ const AdminEditCar = ({ setAuth }) => {
         availableFrom:"",
         availableTill:""
     })
-
+    const [selectedImage,setSelectedImage]=useState("")
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setSelectedCar((prevState) => ({
@@ -25,7 +25,14 @@ const AdminEditCar = ({ setAuth }) => {
             [name]: value,
         }));
     };
-
+    async function cloudinaryFetch(value){
+        const response=await fetch("https://api.cloudinary.com/v1_1/dql4bctke/image/upload",{
+          method:"POST",
+          body:value
+        })
+        const data = await response.json()
+        return data.url
+      }
     const handleSaveClick = () => {
         
             fetch(`http://localhost:8000/car/editcar`,{
@@ -219,13 +226,22 @@ const AdminEditCar = ({ setAuth }) => {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            {/* <button className='img-addBtn' onClick={() => {handleImageSelect()}}>Add</button> */}
+                            { <button className='img-addBtn' onClick={async(e)=>{
+                                e.preventDefault()
+                                    const data=new FormData()
+                                    data.append("file",selectedImage)
+                                   data.append("upload_preset","insta_clone_ragesh")
+                                   data.append("cloud_name","dql4bctke")
+                                   const imageUrl=await cloudinaryFetch(data) 
+                                   setSelectedCar(prev=>({...prev,image:imageUrl}))}}>Add</button> }
                             <input
-                                type="url"
+                                type="file"
                                 name="image"
                                 id="image"
                                 value={selectedCar.images}
-                                onChange={handleInputChange}
+                                onChange={(e)=>{
+                                    setSelectedImage(e.target.files[0])
+                                }}
                                 // className="imageinput"
                                 alt="carimages"
                                 // accept="image/*" multiple style={{ display: "none" }}

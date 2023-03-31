@@ -61,7 +61,7 @@ function MyBooking(){
             <div>End Date <span>{item.endDate}</span></div>
             </div>
         <div id="car-booking-time">
-            <div>Booking id <span id="span1">{item.bookingId.split("c")[0]}</span></div>
+            <div>Booking id <span id="span1">{item.bookingId.substring(0,8)}</span></div>
         <div>Booking Date <span id="span2">{item.bookingDate}</span></div>
         <div>Booking Time <span id="span3">{item.bookingTime}</span></div>
         </div>

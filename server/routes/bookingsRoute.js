@@ -28,7 +28,7 @@ router.get('/getallbookings', async (req, res) => {
 
 
 router.post('/addbooking', async (req, res) => {
-  console.log(req.body)
+
   const { 
     startingDay,
     endingDay,
@@ -75,7 +75,7 @@ router.post('/addbooking', async (req, res) => {
 });
 router.delete('/deletebooking', async (req, res) => {
   const { _id } = req.body;
-  console.log(_id)
+  
 
   try {
     // Remove the post with the given ID from the bookings collection

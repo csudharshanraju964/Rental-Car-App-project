@@ -7,7 +7,7 @@ function Navbar() {
     const {auth, setAuth,usertoken}=useContext(CarContext)
     //console.log(auth)
     useEffect(()=>{
-        const name = (localStorage.getItem('adminName')) || (localStorage.getItem('userName'))
+        const name = (localStorage.getItem('AdminName')) || (localStorage.getItem('userName'))
         setAuth(name);
         // eslint-disable-next-line 
     },[])
