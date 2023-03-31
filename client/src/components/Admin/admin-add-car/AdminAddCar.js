@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./AdminAddCar.css";
@@ -6,7 +6,7 @@ import { CarContext } from '../../CarRentalProvider';
 
 
 function AdminAddCar({ setAuth }) {
-
+    const[image,setImage]=useState("")
     const{admintoken}=useContext(CarContext)    
     const navigate = useNavigate()
     const [car, setCar] = useState({
@@ -24,14 +24,18 @@ function AdminAddCar({ setAuth }) {
         details: ''
     });
     const [errors, setErrors] = useState({});
-
+    const[filterDate,setFilterDate]=useState({
+        availableFrom:"",
+        availableTill:""
+    })
     const handleChange = (event) => {
         setCar({ ...car, [event.target.name]: event.target.value });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
         // Make a POST request to the backend with the car details
+        console.log(car)
         fetch('http://localhost:8000/car/addcar',{
             method:"POST",
             headers:{
@@ -66,6 +70,27 @@ function AdminAddCar({ setAuth }) {
                 setErrors(error.response.data);
             });
     };
+    async function cloudinaryFetch(value){
+        const response=await fetch("https://api.cloudinary.com/v1_1/dql4bctke/image/upload",{
+          method:"POST",
+          body:value
+        })
+        const data = await response.json()
+        return data.url
+      }
+        useEffect(()=>{
+            if(filterDate.availableFrom && filterDate.availableTill){
+             let dateFrom=new Date(filterDate.availableFrom)
+             let dateTill=new Date(filterDate.availableTill)
+             let options = { day: "2-digit", month: "short", year: "numeric" };
+             let rentalStartDate = dateFrom.toLocaleDateString("en-GB", options).split(" ").join("-");
+             let rentalEndDate = dateTill.toLocaleDateString("en-GB", options).split(" ").join("-");
+             setTimeout(() => {
+                setCar({...car,availableFrom:rentalStartDate,availableTill:rentalEndDate})
+             },1000);
+            
+            }
+        },[filterDate])
 
 
     return (
@@ -162,7 +187,8 @@ function AdminAddCar({ setAuth }) {
                                     name='availableFrom'
                                     placeholder='DD MM YYYY'
                                     // value={car.availableFrom}
-                                    onChange={handleChange}
+                                    onChange={(e)=>{
+                                        setFilterDate((prev)=>({...prev,availableFrom:e.target.value}))}}
                                     className="optionsSelector"
                                 />
                                 {errors.availableFrom && <span className='error'>{errors.availableFrom}</span>}
@@ -176,7 +202,8 @@ function AdminAddCar({ setAuth }) {
                                     name='availableTill'
                                     placeholder='DD MM YYYY'
                                     // value={car.availableTill}
-                                    onChange={handleChange}
+                                    onChange={(e)=>{
+                                        setFilterDate((prev)=>({...prev,availableTill:e.target.value}))}}
                                     className="optionsSelector"
                                 />
                                 {errors.availableTill && <span className='error'>{errors.availableTill}</span>}
@@ -199,14 +226,24 @@ function AdminAddCar({ setAuth }) {
                     <div className='secondPart'>
                         <div>
                             <span htmlFor='image' className='images'>Images</span><br />
-                            {/* <button className='img-addBtn'>Add</button> */}
+                            { <button className='img-addBtn' onClick={async(e)=>{
+                                e.preventDefault()
+                                    const data=new FormData()
+                                    data.append("file",image)
+                                   data.append("upload_preset","insta_clone_ragesh")
+                                   data.append("cloud_name","dql4bctke")
+                                   const imageUrl=await cloudinaryFetch(data) 
+                                   setCar(prev=>({...prev,image:imageUrl}))
+                            }}>Add</button> }
                             <input
-                                type="url"
+                                type="file"
                                 name="image"
                                 id="image"
-                                value={car.image}
+                                
                                 placeholder="Enter image Url"
-                                onChange={handleChange}
+                                onChange={(e)=>{
+                                    setImage(e.target.files[0])
+                                }}
                                 className="imageinput"
                                 alt="carimages"
                             />

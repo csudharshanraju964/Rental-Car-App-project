@@ -5,7 +5,7 @@ const Car = require("../models/carModel");
 router.get("/getallcars", async (req, res) => {
   try {
     const cars = await Car.find();
-    res.send(cars);
+    res.status(200).json(cars);
   } catch (error) {
     return res.status(400).json(error);
   }
@@ -48,7 +48,7 @@ router.put("/editcar", async (req, res) => {
 });
 
 router.delete("/deletecar", async (req, res) => {
-  console.log(req.body)
+  
   try {
     await Car.findOneAndDelete({ _id: req.body.id });
 

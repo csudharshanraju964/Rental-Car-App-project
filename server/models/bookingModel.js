@@ -13,6 +13,7 @@ const bookingSchema = new mongoose.Schema({
     pricePerKm: { type: Number},
     mileage: {type: Number},
     seat:{type:Number},
+    image:{type:String},
     bookingId: { type: String },
     author: {
         type: mongoose.Schema.Types.ObjectId,

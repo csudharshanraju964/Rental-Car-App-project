@@ -8,8 +8,8 @@ const carSchema=new mongoose.Schema({
     type:{type:String,required:true},
     milage:{type:Number,required:true},
     rentPerHour : {type : Number , required : true},
-    availableFrom:{type:Date},
-    availableTill:{type:Date},
+    availableFrom:{type:String},
+    availableTill:{type:String},
     carDetails:{type:String,required:true},
     description:{type:String,required:true},
     details:{type:String}

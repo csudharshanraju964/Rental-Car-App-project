@@ -29,12 +29,15 @@ function BookingDetails(){
                 <div id="car-number-div">Car Number <span id="car-number">{`${carBooking.carNumber}`}</span></div>
                 </div >
                 <div id="img-div">
-                    <img src={img}/>
+                    <img src={carBooking.image}/>
                 </div>
             </div>
             <div id="car-rent-date-div">
+            <div>Origin <span id="origin">Mysore</span></div>
+            <div>Destination<span id="destination">Banglore</span></div>
             <div>Start Date <span id="start-date">{`${carBooking.startingDay}`}</span></div>    
-            <div>End Date <span id="end-date">{` ${carBooking.endingDay}`}</span></div>  
+            <div>End Date <span id="end-date">{` ${carBooking.endingDay}`}</span></div>
+            <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3618.3280597402077!2d84.04830495125768!3d24.92089173394706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x398db10689c9b687%3A0x451f59283c560da1!2sMahindra%20Bombay%20Automobiles!3m2!1d24.9195!2d84.0546!4m5!1s0x398db1cb49448895%3A0x3ba298dc09aa0d8e!2sKaimur%20Wildlife%20Sanctuary%20Gate%2C%20W29W%2BJJ2%2C%20Sikaria%2C%20Bihar%20821115!3m2!1d24.9198187!2d84.0463017!5e0!3m2!1sen!2sin!4v1679992531424!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>  
             </div>
             <div id="car-booking-time-div">
                 <div id="car-booking-id">Booking id <span id="booking-id">{carBooking.bookingId}</span></div>
@@ -54,7 +57,8 @@ function BookingDetails(){
                         carNumber:"",
                         currentDate:"",
                         currentTime:"",
-                        bookingId:""
+                        bookingId:"",
+                        image:""
                 })
                 navigate("/carbooking")
                 }}>Cancel</button>

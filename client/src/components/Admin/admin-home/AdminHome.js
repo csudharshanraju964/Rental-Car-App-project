@@ -18,7 +18,8 @@ function AdminHome({ setAuth }) {
               }
         })
             .then(response => response.json())
-            .then(data => setCars(data));
+            .then(data => {setCars(data)
+                console.log(data)});
     }, []);
 
     return (
@@ -52,6 +53,7 @@ function AdminHome({ setAuth }) {
                                <img src={car.image} alt="car"/>
                             </div>
                             <h5 className='car-capacity'>{`${car.capacity} Persons ` }</h5>
+                            <h5 className='car-capacity'>{`${car.capacity} Seater`}</h5>
                             <span className='car-name'>{car.name}</span>
                             <span className='car-rent'>{car.rentPerHour}</span>
                             <div className='car-info'>{car.availableFrom}</div>
