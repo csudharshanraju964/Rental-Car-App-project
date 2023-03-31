@@ -5,7 +5,7 @@ import profileIcon from './profileIcon.png';
 import logout from './logout.png';
 import toast from 'react-hot-toast';
 
-function LogoutBtn({setAuth}) {
+function LogoutBtn({setAuth,usertoken}) {
 
     const navigate = useNavigate()
 
@@ -28,6 +28,7 @@ function LogoutBtn({setAuth}) {
                 <h2 className='nameTitle'>{profileName}</h2>
                 <img src={profileIcon} alt='profileIcon' className='profileIcon' />
             </div>
+            {usertoken && <button id ="my-booking" onClick={()=>{navigate("/mybookings")}}>My Bookings</button>}
             <img src={logout} alt='logoutIcom' onClick={handleLogout} className='logoutBtn' />
         </div>
     )

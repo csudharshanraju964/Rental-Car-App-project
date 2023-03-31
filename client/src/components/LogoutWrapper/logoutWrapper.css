@@ -41,3 +41,11 @@
 .logoutBtn:hover {
     background-color: aliceblue;
 }
+#my-booking{
+    margin-right: 1rem;
+    background-color:#007FED;
+    color: white;
+    padding: 0rem 0.5rem;
+    border:1px solid #007FED;
+    border-radius: 5rem;
+}

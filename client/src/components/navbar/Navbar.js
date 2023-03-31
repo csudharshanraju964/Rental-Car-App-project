@@ -4,7 +4,7 @@ import LogoutBtn from '../LogoutWrapper/LogoutBtn'
 import { CarContext } from '../CarRentalProvider'
 
 function Navbar() {
-    const {auth, setAuth}=useContext(CarContext)
+    const {auth, setAuth,usertoken}=useContext(CarContext)
     //console.log(auth)
     useEffect(()=>{
         const name = (localStorage.getItem('adminName')) || (localStorage.getItem('userName'))
@@ -18,7 +18,7 @@ function Navbar() {
     return (
         <div className='Navbar' style={{backgroundColor}}>
             <h2 className='logo'>LOGO</h2>
-            {auth && <div ><LogoutBtn setAuth={setAuth} /></div>}
+            {auth && <div ><LogoutBtn setAuth={setAuth} usertoken={usertoken}/></div>}
         </div>
     )
 }
