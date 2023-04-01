@@ -1,16 +1,17 @@
 #my-booking-main-div{
     display: flex;
     border:1px solid #CCCCCC;
-    width: 90%;
+    width: 95%;
     margin: 2rem 0rem 0rem 4rem;
 }
 #my-booking-main-div > #img-div{
     width: 15rem;
+    height:10rem;
     padding :0.2rem;
 } 
 #my-booking-main-div > #img-div >img{
     max-width: 100%;
-    object-fit: fill;
+    height:100%
 }
 #my-booking-main-div #car-details-div{
     padding: 0.2rem;
@@ -190,8 +191,8 @@
 }
 .booking-status-div .car-rent-date-div #map{
     position: absolute;
-    top:340px;
-    left:425px;
+    top:20.45rem;
+    left:26.5625rem;
     width: 15rem;
     height: 7rem;    
 

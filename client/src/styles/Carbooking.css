@@ -67,9 +67,12 @@ body{
     margin-bottom: 2rem;
     
 }
-
+#img-div{
+    height: 10rem;
+}
 #data-div #img-div img{
     max-width: 100%;
+    height: 100%;
 }
 
 #data-div >#button-div button{

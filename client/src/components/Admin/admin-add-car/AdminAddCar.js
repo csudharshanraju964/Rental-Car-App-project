@@ -35,7 +35,6 @@ function AdminAddCar({ setAuth }) {
     const handleSubmit = async(event) => {
         event.preventDefault();
         // Make a POST request to the backend with the car details
-        console.log(car)
         fetch('http://localhost:8000/car/addcar',{
             method:"POST",
             headers:{
