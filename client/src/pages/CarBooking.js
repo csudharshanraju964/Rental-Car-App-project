@@ -118,7 +118,7 @@ useEffect(()=>{
 if(data.length){
     let datas
     if(carDetails.startingDate){
-         datas=data.filter(item=>item.availableFrom===carDetails.startingDate)
+         datas=data.filter(item=>new Date(carDetails.startingDate) >= new Date(item.availableFrom))
     }
 
     if(!carDetails.mileageSelect && !carDetails.seatingSelect && !carDetails.selected){
